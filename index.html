@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CookTriage — symptom, cause, fix for kitchen disasters. Free troubleshooting flowcharts for home cooks.">
+  <title>CookTriage — Rescue Your Dinner</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo" data-action="home">
+        <span class="logo-mark" aria-hidden="true">🍳</span>
+        <span class="logo-text">Cook<strong>Triage</strong></span>
+      </a>
+      <p class="tagline">Symptom → cause → fix</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="view-home" class="view active">
+      <div class="hero">
+        <h1>Something went wrong?<br>Let's fix it.</h1>
+        <p class="hero-sub">Pick what's happening. We'll walk you through the most likely causes and what to do <em>right now</em> — no panic, no starting over unless you have to.</p>
+      </div>
+
+      <div class="category-grid" id="category-grid" role="list"></div>
+
+      <aside class="rescue-card">
+        <div class="rescue-content">
+          <h2>Kitchen Rescue</h2>
+          <p>Stuck mid-cook with a weird situation? Send a photo and notes — get a custom troubleshoot plan from a real cook.</p>
+          <ul class="rescue-includes">
+            <li>What went wrong + what you have on hand</li>
+            <li>Step-by-step fix (not "start over")</li>
+            <li>Reply within 24 hours</li>
+          </ul>
+        </div>
+        <div class="rescue-cta">
+          <span class="price">$12</span>
+          <a href="https://ko-fi.com/s/placeholder" class="btn btn-primary" id="rescue-link" target="_blank" rel="noopener">Get a Rescue</a>
+          <p class="rescue-note">Update this link in <code>index.html</code> once your Ko-fi or Gumroad is live.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section id="view-triage" class="view" hidden>
+      <nav class="breadcrumb">
+        <button type="button" class="link-btn" data-action="home">All problems</button>
+        <span aria-hidden="true">/</span>
+        <span id="breadcrumb-category"></span>
+      </nav>
+
+      <div class="triage-panel">
+        <div class="triage-progress">
+          <div class="progress-step active" data-step="1"><span>Symptom</span></div>
+          <div class="progress-step" data-step="2"><span>Cause</span></div>
+          <div class="progress-step" data-step="3"><span>Fix</span></div>
+        </div>
+
+        <div id="step-symptom" class="triage-step active">
+          <h2 id="symptom-title">What's going on?</h2>
+          <p class="step-hint" id="symptom-hint"></p>
+          <div class="option-list" id="symptom-options" role="list"></div>
+        </div>
+
+        <div id="step-cause" class="triage-step" hidden>
+          <h2>Most likely cause</h2>
+          <p class="step-hint">Based on what you picked — this is where cooks usually went wrong.</p>
+          <div class="cause-card" id="cause-card"></div>
+          <div class="cause-nav">
+            <button type="button" class="btn btn-ghost" id="btn-alt-cause">Try another cause</button>
+            <button type="button" class="btn btn-primary" id="btn-to-fix">Show me the fix →</button>
+          </div>
+        </div>
+
+        <div id="step-fix" class="triage-step" hidden>
+          <h2>Do this now</h2>
+          <div class="fix-card" id="fix-card"></div>
+          <div class="fix-footer">
+            <button type="button" class="btn btn-ghost" data-action="restart">Start over</button>
+            <button type="button" class="btn btn-secondary" id="btn-still-stuck">Still stuck? Get a Rescue</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>Built for home cooks who troubleshoot instead of panic.</p>
+      <p><a href="https://github.com/KR8ZYSHO3/KR8ZYSHO3.github.io" target="_blank" rel="noopener">GitHub</a></p>
+    </div>
+  </footer>
+
+  <script src="js/triage-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
