@@ -29,3 +29,12 @@ const TRIAGE_STEP_IMAGES = {
   cause: "assets/images/step-cause.png",
   fix: "assets/images/step-fix.png"
 };
+
+const SITE_IMAGES = {
+  logoMark: "assets/images/logo-mark.jpg",
+  hero: "assets/images/hero-illustration.jpg",
+  ogCard: "assets/images/og-social-card.jpg",
+  learnTeaser: "assets/images/learn-teaser.jpg",
+  rescue: "assets/images/rescue-illustration.jpg",
+  searchEmpty: "assets/images/search-empty.jpg"
+};

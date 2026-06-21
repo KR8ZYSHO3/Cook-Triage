@@ -293,7 +293,11 @@
     const hits = searchIndex.filter((item) => item.haystack.includes(q)).slice(0, 12);
     if (!hits.length) {
       els.searchResults.hidden = false;
-      els.searchResults.innerHTML = `<p class="search-empty">No matches. Try "salty", "mushy", "dry chicken", or "sauce split".</p>`;
+      els.searchResults.innerHTML = `
+        <div class="search-empty-wrap">
+          <img class="search-empty-art" src="${SITE_IMAGES.searchEmpty}" alt="" width="72" height="72" decoding="async">
+          <p class="search-empty">No matches. Try "salty", "mushy", "dry chicken", or "sauce split".</p>
+        </div>`;
       return;
     }
 
