@@ -15,7 +15,8 @@ const LESSONS_DATA = [
       {
         heading: "What this is (plain English)",
         body: `<p><strong>Mise en place</strong> means "everything in its place." At home, that just means: <strong>read the recipe, pull your stuff, prep it, then cook.</strong></p>
-        <p>Most burnt garlic and split sauces happen because someone started cooking while still chopping. This lesson fixes that with one practice dish — a basic stir-fry setup you can copy for any recipe.</p>`
+        <p>Most burnt garlic and split sauces happen because someone started cooking while still chopping. This lesson fixes that with one practice dish — a basic stir-fry setup you can copy for any recipe.</p>
+        <p>There's another reason this matters: most home cooks are used to keeping the burner on <strong>low or medium</strong> — and that's completely fine for weeknight dinners. But if you want to push yourself and actually <strong>build flavor</strong> (browning, sizzle, sauce that coats instead of pools), you sometimes need <strong>higher heat</strong>. You can't do that safely while you're still mincing garlic. Mise en place is what frees your hands and your attention so you can cook hotter when the dish calls for it — and <strong>control the heat</strong> by turning it down or <strong>lifting the pan off the burner</strong> when things move too fast.</p>`
       },
       {
         heading: "What you need",
@@ -60,6 +61,11 @@ const LESSONS_DATA = [
             watch: "Sauce ready before heat — no fumbling bottles when the pan is hot."
           },
           {
+            title: "Plan your heat",
+            text: "Before you light the burner, decide: does this dish need a quick sear (medium-high) or a gentle simmer (low)? Stir-fry wants a hot pan — but you're in control. The knob isn't your only tool; sliding the pan off the heat buys you seconds when garlic threatens to burn.",
+            watch: "Higher heat is only safe when prep is done. Low/medium forever is fine — but mise is what lets you level up when you're ready."
+          },
+          {
             title: "Final check",
             text: "Towel for spills. Garbage bowl. Salt within reach. Sticky note if you'll forget rice: \"RICE FIRST.\" Only now — turn on the burner.",
             watch: "If you feel rushed turning on the stove, something is still unprepped."
@@ -86,6 +92,7 @@ const LESSONS_DATA = [
           "Aromatics in bowls, not on the board",
           "Liquids measured in cups",
           "Pan and tools out",
+          "Heat level decided (and pan-off-the-burner as backup)",
           "Only then: turn on heat"
         ]
       },
@@ -94,6 +101,7 @@ const LESSONS_DATA = [
         science: true,
         body: `<p>Kitchen disasters are usually <strong>timing failures</strong>, not skill failures. Your brain can only track so many tasks. When prep isn't done, you enter <strong>cognitive overload</strong> — garlic burns while you hunt for soy sauce.</p>
         <p>Separating prep from cooking also separates <strong>wet work</strong> (chopping, measuring) from <strong>dry heat work</strong> (browning). Dry surfaces need attention the moment they hit the pan. Mise en place guarantees that attention is available.</p>
+        <p>Low and medium heat are forgiving — that's why so many home cooks stay there. Browning and wok-style sizzle need brief bursts of higher temperature. Without mise, your instinct is to keep heat low so nothing runs away from you. With everything prepped, you can run the pan hotter for the protein, then <strong>pull it off the heat</strong> or drop to low the second aromatics go in. Heat control isn't just the dial; it's <strong>pan on, pan off, lid on, lid off</strong>.</p>
         <p>Professional kitchens run on this for the same reason hospitals run on checklists: predictable order beats heroic panic.</p>`
       }
     ]
