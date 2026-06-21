@@ -267,6 +267,51 @@ const CATEGORY_VEGETABLES = {
           tip: "Whole roasted garlic head = forgiving. Minced on sheet pan = burns."
         }
       ]
+    },
+    {
+      id: "onions-wont-brown",
+      label: "Onions won't brown / just steaming",
+      causes: [
+        {
+          title: "Pan too crowded or too wet",
+          likelihood: "most-likely",
+          explanation: "Onions release a lot of water. Too many in the pan = steam bath, not caramelization.",
+          fixes: [
+            "Cook fewer onions at a time — they need space to evaporate moisture.",
+            "Medium heat, not low — low just sweats them forever without color.",
+            "Don't cover the pan — lid traps steam and blocks browning.",
+            "Add pinch of salt early — draws out water, then keep cooking until dry again.",
+            "Deglaze only after color appears — liquid too early stops the browning phase."
+          ],
+          tip: "Sweating (translucent) and browning (golden) are two phases — don't stop at translucent if you want color.",
+          ifNotFixed: "If you needed caramelized onions and got mush: cook longer on medium, stirring, until pan looks dry and onions are golden."
+        },
+        {
+          title: "Heat too low or wrong fat amount",
+          likelihood: "common",
+          explanation: "Barely warm oil + low heat = soft onions, no Maillard. No fat = sticking and uneven color.",
+          fixes: [
+            "Use enough oil or butter to coat the pan — 1–2 tbsp for a large onion.",
+            "Bump to medium or medium-high once onions are softened.",
+            "Cast iron holds heat better for long onion cooks.",
+            "Add a tiny pinch of baking soda (controversial but works) to speed browning — use sparingly.",
+            "Finish with splash of water to scrape fond if onions stick — then keep going."
+          ],
+          tip: "Golden onions take 15–25 minutes on medium with stirring. 'Quick caramelized' recipes lie."
+        },
+        {
+          title: "Wrong onion type or huge uneven slices",
+          likelihood: "less-common",
+          explanation: "Sweet onions brown faster; thick wedges cook unevenly — edges burn, centers stay raw.",
+          fixes: [
+            "Slice evenly — mandoline or sharp knife, same thickness.",
+            "Yellow onions are the workhorse for browning. Sweet onions go faster — watch heat.",
+            "Separate rings if they clump — surface area = color.",
+            "Start high-moisture onions (red, sweet) on slightly higher heat after sweat."
+          ],
+          tip: "For French onion soup depth, low-and-slow for 40+ min beats rushing on high (which burns)."
+        }
+      ]
     }
   ]
 };

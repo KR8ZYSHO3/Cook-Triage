@@ -2,7 +2,7 @@ const CATEGORY_HEAT_PAN = {
   id: "heat-pan",
   icon: "🔥",
   title: "Pan & heat",
-  description: "Stuck, burnt outside raw inside, scorched stew, smoking oil, uneven heat",
+  description: "Stuck, steams not browning, burnt outside raw inside, scorched stew, smoking oil",
   hint: "Pan problems are heat management — fix the process, usually save the food.",
   symptoms: [
     {
@@ -236,6 +236,52 @@ const CATEGORY_HEAT_PAN = {
             "Finish in oven for even heat penetration."
           ],
           tip: "Pan bigger than burner = cold edges forever — size down or oven finish."
+        }
+      ]
+    },
+    {
+      id: "steams-not-browns",
+      label: "Food steams / greys instead of browning",
+      causes: [
+        {
+          title: "Pan not hot enough before food went in",
+          likelihood: "most-likely",
+          explanation: "Food hit a warm pan, not a hot one — proteins leak moisture and steam instead of searing.",
+          fixes: [
+            "Preheat empty pan until oil shimmers or water droplet dances (stainless test).",
+            "Pat food bone-dry — wet surface kills the sear.",
+            "Don't add food until pan recovers after oil — should sizzle instantly on contact.",
+            "Smaller batch — fewer pieces = pan stays hot.",
+            "Finish in oven if exterior is pale but inside needs more time."
+          ],
+          tip: "You should hear sizzle the second food hits. Silence = too cold or too wet.",
+          ifNotFixed: "Grey chicken still cooks — sauce, crust, or shredding saves flavor even without a sear."
+        },
+        {
+          title: "Overcrowded pan dropped the temperature",
+          likelihood: "common",
+          explanation: "Too much food at once = pan becomes a steamer. Classic home-cook move.",
+          fixes: [
+            "Cook in batches, keep finished pieces warm in 200°F oven.",
+            "Leave 1 inch between pieces — they shouldn't touch.",
+            "Let pan reheat 1–2 min between batches.",
+            "Cut food smaller so it sears faster before steaming.",
+            "Use two pans if you're cooking for a crowd."
+          ],
+          tip: "Restaurant sears in batches. Home cooks try to cheat — pan punishes it."
+        },
+        {
+          title: "Heat too low on purpose (fear of burning)",
+          likelihood: "common",
+          explanation: "Low/medium-low is safe but never browns. Maillard needs surface temp above ~300°F.",
+          fixes: [
+            "Medium-high for sear, then lower to finish — two-stage cooking.",
+            "Mise en place first so you can manage higher heat without panic.",
+            "Pull pan off burner if garlic or butter threatens to burn — heat control isn't only the dial.",
+            "Dry brine meat 30 min uncovered in fridge — drier surface browns easier.",
+            "Use oil with higher smoke point for high-heat sear (avocado, refined, not butter at start)."
+          ],
+          tip: "Browning is a skill unlock, not a default. Prep first, then turn the heat up when you're ready."
         }
       ]
     }

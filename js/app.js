@@ -4,6 +4,7 @@
     { catId: "grains", symptomId: "rice-mushy", label: "Mushy rice" },
     { catId: "sauces", symptomId: "split", label: "Sauce split" },
     { catId: "meat", symptomId: "dry-chicken", label: "Dry chicken" },
+    { catId: "heat-pan", symptomId: "steams-not-browns", label: "Won't brown" },
     { catId: "heat-pan", symptomId: "stuck", label: "Stuck to pan" },
     { catId: "eggs", symptomId: "rubbery", label: "Rubbery eggs" },
     { catId: "pasta", symptomId: "mushy", label: "Mushy pasta" },

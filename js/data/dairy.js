@@ -87,6 +87,51 @@ const CATEGORY_DAIRY = {
           tip: "Always temper yogurt like you'd temper eggs."
         }
       ]
+    },
+    {
+      id: "butter-burned",
+      label: "Butter burned / brown specks in pan",
+      causes: [
+        {
+          title: "Heat too high for butter alone",
+          likelihood: "most-likely",
+          explanation: "Milk solids in butter burn around 350°F — faster than oil. Brown specks = bitter fond.",
+          fixes: [
+            "If specks are light brown: strain butter through fine mesh, wipe pan, start fresh fat.",
+            "If acrid black: wipe pan completely, don't scrape bitter fond into food.",
+            "Finish dish with fresh butter off heat instead of burnt pan butter.",
+            "Next time: use ghee or oil for high-heat sear, add butter at the end.",
+            "Clarified butter (milk solids removed) handles higher heat."
+          ],
+          tip: "Butter for flavor at the end, oil for heat at the start — best of both.",
+          ifNotFixed: "Bitter throughout: transfer protein/veg to new pan, rebuild sauce without burnt fat."
+        },
+        {
+          title: "Butter browned on purpose but went too far",
+          likelihood: "common",
+          explanation: "Beurre noisette (brown butter) goes from nutty to burnt in seconds.",
+          fixes: [
+            "Pour immediately into cool bowl to stop cooking — residual pan heat continues browning.",
+            "If smells nutty and hazelnut-colored, you're good — use fast.",
+            "If smells sharp and looks black, discard and start over.",
+            "Add squeeze of lemon to nutty brown butter — buys seconds of forgiveness.",
+            "Lower heat once foaming subsides — that's when solids start to brown."
+          ],
+          tip: "Brown butter: pull when it smells like toffee, not when it looks perfect — it keeps cooking."
+        },
+        {
+          title: "Garlic or spices burned in butter",
+          likelihood: "less-common",
+          explanation: "Butter + minced garlic on high = instant charcoal flecks.",
+          fixes: [
+            "Pick out black bits with spoon.",
+            "Add fresh garlic to new knob of butter off heat.",
+            "Garlic chips: slice thicker, lower heat, watch constantly.",
+            "Infuse oil with garlic first, then add butter for finish."
+          ],
+          tip: "Garlic in butter needs medium heat max — or add garlic after butter stops foaming and cools slightly."
+        }
+      ]
     }
   ]
 };

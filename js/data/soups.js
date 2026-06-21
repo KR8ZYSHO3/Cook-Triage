@@ -129,6 +129,51 @@ const CATEGORY_SOUPS = {
           tip: "Add acid at the end, not during hard simmer with cream."
         }
       ]
+    },
+    {
+      id: "too-salty",
+      label: "Soup or stew too salty",
+      causes: [
+        {
+          title: "Reduced too long or seasoned twice",
+          likelihood: "most-likely",
+          explanation: "Water left the pot and salt stayed — same salt, less volume, louder taste.",
+          fixes: [
+            "Add unsalted stock or water in ½-cup splashes, stir, taste, repeat.",
+            "Float raw potato chunks 15–20 min, remove — mild salt absorption.",
+            "Add more unsalted vegetables or beans to bulk the pot.",
+            "Serve over plain rice or with unsalted bread to balance each bite.",
+            "Never add more salty ingredients until you've tasted after diluting."
+          ],
+          tip: "Season soup at the end — reduction concentrates salt you added at the start.",
+          ifNotFixed: "Split into two pots: dilute one half aggressively, blend back — saves large batches."
+        },
+        {
+          title: "Used store-bought broth, bouillon, or canned tomatoes",
+          likelihood: "common",
+          explanation: "Commercial broth and canned goods bring hidden sodium — easy to overshoot.",
+          fixes: [
+            "Switch to half water, half broth for the rest of the cook.",
+            "Rinse canned beans before adding.",
+            "Balance with acid (lemon, vinegar) and fat (cream, olive oil) — makes salt feel less sharp.",
+            "Add raw diced potato or pasta — starch absorbs some salt per bowl.",
+            "Note which product was salty — buy low-sodium next time."
+          ],
+          tip: "Taste canned broth before salting anything — some are saltier than seawater."
+        },
+        {
+          title: "Accidentally doubled salt or mis-measured",
+          likelihood: "less-common",
+          explanation: "Tablespoon vs teaspoon, or two cooks seasoning without tasting.",
+          fixes: [
+            "Dilute is the only real fix — you can't remove dissolved salt.",
+            "Make a second unsalted batch of base, combine.",
+            "Turn into a seasoning concentrate: freeze small portions to flavor future unsalted soups.",
+            "Add dairy at serve — cream doesn't remove salt but rounds harsh edges."
+          ],
+          tip: "Practice the rescue loop: symptom → dilute → taste → bulk → balance. See the Rescue Mindset lesson."
+        }
+      ]
     }
   ]
 };

@@ -538,5 +538,186 @@ const LESSONS_DATA = [
         <p>Culinary school teaches the vocabulary. Home cooking teaches <strong>which failures matter</strong> and how to fix them without starting over. CookTriage is the second part — the part I needed after I left school.</p>`
       }
     ]
+  },
+  {
+    id: "salt-acid-fat",
+    icon: "🔺",
+    title: "Salt, acid, fat",
+    subtitle: "Fix bland food with three knobs — taste as you go",
+    readTime: "10 min",
+    tagline: "Most 'boring' dinners aren't missing a secret spice. They're missing one of three things.",
+    relatedTriage: [
+      { catId: "flavor", symptomId: "too-bland", label: "Flat / boring" },
+      { catId: "flavor", symptomId: "too-salty", label: "Too salty" },
+      { catId: "soups", symptomId: "too-salty", label: "Soup too salty" }
+    ],
+    sections: [
+      {
+        heading: "What this is (plain English)",
+        body: `<p>Professional cooks talk about <strong>salt, acid, and fat</strong> like a triangle — adjust any corner and the whole dish wakes up. Home recipes often say "season to taste" without teaching you what to reach for.</p>
+        <p>You'll practice on a plain bowl of rice or noodles (or toast) so you can taste each addition in isolation. No recipe roulette — just three ingredients and a spoon.</p>`
+      },
+      {
+        heading: "What you need",
+        ingredients: [
+          "1 cup plain cooked rice, pasta, or buttered toast",
+          "Salt (kosher or table — pick one and stick with it)",
+          "Acid: lemon wedge or 1 tbsp vinegar (rice, white wine, or apple cider)",
+          "Fat: 1 tbsp butter or olive oil",
+          "3 small bowls or one plate divided mentally",
+          "Spoon for tasting"
+        ],
+        ingredientsNote: "Bland base on purpose — you're learning the controls, not making a fancy dish."
+      },
+      {
+        heading: "Do this now — step by step",
+        walkthrough: [
+          {
+            title: "Taste the blank canvas",
+            text: "Eat a spoonful plain. Notice: flat, starchy, nothing happening. Say it out loud: \"Needs something.\"",
+            watch: "If it already tastes good, your base was seasoned — grab a blander batch or unsalted rice."
+          },
+          {
+            title: "Add salt only",
+            text: "Pinch of salt, toss, taste. Repeat in tiny amounts until food tastes like itself, just louder — not salty yet.",
+            watch: "Salt should make you want another bite, not reach for water."
+          },
+          {
+            title: "Add acid only (fresh portion)",
+            text: "New spoonful: salt to almost-right, then 3–5 drops lemon or vinegar. Taste. Should feel brighter, not sour.",
+            watch: "Acid lifts — it doesn't replace salt. You need both."
+          },
+          {
+            title: "Add fat only (fresh portion)",
+            text: "Salt + acid on a third spoonful, then a little butter or olive oil. Taste. Should feel round, not greasy.",
+            watch: "Fat carries flavor and softens harsh edges — especially after acid."
+          },
+          {
+            title: "Combine on the full bowl",
+            text: "Salt the whole bowl in layers. Taste. Acid in small splashes. Taste. Fat at the end. Taste again.",
+            watch: "Stop when it tastes complete — not when the recipe amount is used up."
+          }
+        ]
+      },
+      {
+        heading: "You're done when…",
+        body: `<ul>
+          <li>You can name which corner was missing on the bland spoonful</li>
+          <li>You added each element in small amounts with tasting between</li>
+          <li>The final bowl tastes balanced — not sharp, not greasy, not salty</li>
+          <li>You'd apply the same loop to soup, stir-fry, or roasted veg tonight</li>
+        </ul>
+        <p>Too far on one corner? CookTriage has paths: too salty, too sour, greasy mouthfeel.</p>`
+      },
+      {
+        heading: "Checklist: save this for next time",
+        interactive: true,
+        checklist: [
+          "Taste before seasoning — know the starting point",
+          "Salt in pinches until food wakes up",
+          "Acid in drops until it brightens, not puckers",
+          "Fat at the end until it feels round",
+          "Taste after every single addition"
+        ]
+      },
+      {
+        heading: "The science behind it",
+        science: true,
+        body: `<p><strong>Salt</strong> ions interact with taste receptors and suppress bitterness — food reads as more flavorful overall, not just saltier.</p>
+        <p><strong>Acid</strong> (low pH) balances richness and salt perception — why lemon on fish and vinegar on greens work. Too much and you get sour; just enough and the dish tastes awake.</p>
+        <p><strong>Fat</strong> dissolves aroma compounds and coats the tongue — volatile flavors hit harder. It's also a texture fix: olive oil on dry pasta, butter on flat vegetables.</p>
+        <p>Seasoning in layers works because each addition changes how the next tastes. That's why dump-and-stir fails — your brain can't track a three-corner triangle in one pour.</p>`
+      }
+    ]
+  },
+  {
+    id: "eggs-at-home",
+    icon: "🍳",
+    title: "Eggs without rubber",
+    subtitle: "One pan, two styles — learn when to go low vs when to go hot",
+    readTime: "14 min",
+    tagline: "Eggs punish the wrong heat. You'll cook scrambled and fried back-to-back to feel the difference.",
+    relatedTriage: [
+      { catId: "eggs", symptomId: "rubbery", label: "Rubbery eggs" },
+      { catId: "eggs", symptomId: "scramble-watery", label: "Watery scramble" },
+      { catId: "eggs", symptomId: "browned", label: "Brown crispy bits" }
+    ],
+    sections: [
+      {
+        heading: "What this is (plain English)",
+        body: `<p>Eggs are the fastest way to ruin breakfast with the wrong heat. <strong>Scrambled</strong> wants low and slow. <strong>Fried</strong> wants a hot pan and patience before flipping. Same ingredient, opposite rules.</p>
+        <p>You'll cook both in one session — mise en place first, because fried eggs don't wait while you find a spatula.</p>`
+      },
+      {
+        heading: "What you need",
+        ingredients: [
+          "4 eggs",
+          "2 tbsp butter divided",
+          "1 tbsp milk or cream (optional, for scramble only)",
+          "Salt, pepper",
+          "Nonstick or well-seasoned skillet",
+          "Silicone spatula",
+          "2 small bowls"
+        ],
+        ingredientsNote: "Crack eggs into bowls before heat — fishing shell mid-cook is how scrambles turn rubber."
+      },
+      {
+        heading: "Do this now — step by step",
+        walkthrough: [
+          {
+            title: "Mise first",
+            text: "Crack 2 eggs into a bowl for scramble, 2 for fry. Butter measured. Spatula out. Plate waiting.",
+            watch: "Fried egg yolk breaks if you fumble tools — everything at hand."
+          },
+          {
+            title: "Scrambled — low heat",
+            text: "Pan on low. Half the butter melts. Whisk eggs with pinch salt + tiny splash milk. Pour in. Stir slowly with spatula, pushing curds. Off heat when 80% set — still glossy.",
+            watch: "No brown on scrambled. If browning, heat too high."
+          },
+          {
+            title: "Rest scramble, wipe pan",
+            text: "Scramble on plate — carryover finishes. Wipe pan or quick rinse if brown flecks. Dry pan.",
+            watch: "Scramble waits; fried egg needs clean fat."
+          },
+          {
+            title: "Fried — medium-high heat",
+            text: "Remaining butter, pan medium-high until foaming subsides. Slide egg in gently. Don't touch 2–3 min. White sets, edges crisp slightly. Optional flip 30 sec for over-easy.",
+            watch: "If white spreads like water, egg was old or pan wasn't hot enough."
+          },
+          {
+            title: "Compare and taste",
+            text: "Eat scramble first — soft, creamy. Then fried — set white, runny or set yolk. Same eggs, different heat strategy.",
+            watch: "Rubbery scramble = too hot or too long. Raw white on fried = flipped too soon."
+          }
+        ]
+      },
+      {
+        heading: "You're done when…",
+        body: `<ul>
+          <li>Scramble is soft, no brown crust, slightly moist</li>
+          <li>Fried white is set with golden edges, yolk how you like it</li>
+          <li>You prepped before heat for both</li>
+          <li>You know which mistake causes rubber (high heat on scramble)</li>
+        </ul>`
+      },
+      {
+        heading: "Checklist: save this for next time",
+        interactive: true,
+        checklist: [
+          "Eggs cracked in bowls before pan goes on",
+          "Scramble: low heat, slow stir, off heat while glossy",
+          "Fried: hotter pan, don't move until white sets",
+          "Wipe pan between styles if needed",
+          "Pull scramble early — plate carryover cooks the rest"
+        ]
+      },
+      {
+        heading: "The science behind it",
+        science: true,
+        body: `<p>Egg white proteins (albumin) denature and tighten with heat. <strong>Low heat</strong> lets curds form gently — creamy scramble. <strong>High heat</strong> tightens proteins fast — rubber or tough whites.</p>
+        <p><strong>Carryover cooking</strong> matters hugely for eggs because they're thin — residual heat in the pan finishes them after you pull. Scramble off heat at 80% set; yolk coasts to perfect if fried egg rests 1 min.</p>
+        <p>Milk in scramble adds water and fat — small amount helps tenderness; too much + high heat = weeping water on the plate. Fat (butter) coats proteins and slows tightening — why diner scrambles use plenty of butter.</p>`
+      }
+    ]
   }
 ];

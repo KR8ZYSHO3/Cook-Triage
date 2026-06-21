@@ -328,6 +328,51 @@ const CATEGORY_MEAT = {
           tip: "Homemade sausage: stuff 80% full, not tennis-ball tight."
         }
       ]
+    },
+    {
+      id: "pink-but-done",
+      label: "Chicken looks pink but thermometer says done",
+      causes: [
+        {
+          title: "Myoglobin near bone — safe, not raw",
+          likelihood: "most-likely",
+          explanation: "Young chicken often has pink tint near the thigh bone even at 165°F. Color lies; temperature doesn't.",
+          fixes: [
+            "Trust the thermometer in the thickest part, not near bone.",
+            "If 165°F and juices run clear (not red), it's safe to eat.",
+            "Let rest 5 minutes — carryover can add a few degrees.",
+            "If pink only at bone, serve — it's cosmetic, not undercooked meat.",
+            "Next time: cook to 160°F, rest to 165°F for juicier result."
+          ],
+          tip: "USDA safe temp for chicken is 165°F. Pink near bone ≠ undercooked.",
+          ifNotFixed: "If thermometer reads under 165°F in the thickest meat (away from bone), back in the oven — appearance doesn't matter."
+        },
+        {
+          title: "Marinade with paprika, tomato, or cure made it look red",
+          likelihood: "common",
+          explanation: "Red spices and smoke can stain cooked meat pink. Nitrites in cured meats stay pink by design.",
+          fixes: [
+            "Check temp anyway — stain is not blood if fully cooked.",
+            "Wipe surface — sometimes it's sauce, not meat color.",
+            "White meat with pink only at surface from marinade = normal.",
+            "Learn your marinade — tomato-based marinades always look 'rare'."
+          ],
+          tip: "Thermometer beats eyes every time, especially with spiced or smoked chicken."
+        },
+        {
+          title: "Actually undercooked near bone — verify placement",
+          likelihood: "less-common",
+          explanation: "Thermometer hit a hot pocket or thin edge instead of thickest meat.",
+          fixes: [
+            "Re-insert thermometer parallel to grain in the thickest breast or thigh meat.",
+            "Avoid touching bone — reads falsely high.",
+            "Cut at thickest point if unsure — if any translucent flesh, cook more.",
+            "Dark meat needs same 165°F — takes longer than breast on same bird.",
+            "Return to oven covered with foil until temp hits target."
+          ],
+          tip: "Two readings beat one — check breast and thigh separately on whole birds."
+        }
+      ]
     }
   ]
 };
