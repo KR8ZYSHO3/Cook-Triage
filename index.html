@@ -17,7 +17,10 @@
         <span class="logo-mark" aria-hidden="true">🍳</span>
         <span class="logo-text">Cook<strong>Triage</strong></span>
       </a>
-      <p class="tagline">Symptom → cause → fix</p>
+      <nav class="header-nav">
+        <button type="button" class="nav-btn active" data-nav="triage">Triage</button>
+        <button type="button" class="nav-btn" data-nav="learn">Learn</button>
+      </nav>
     </div>
   </header>
 
@@ -36,6 +39,14 @@
       </div>
 
       <div class="category-grid" id="category-grid" role="list"></div>
+
+      <section class="learn-teaser">
+        <div class="learn-teaser-text">
+          <h2>Learn the systems</h2>
+          <p>Mise en place, cooking methods, French sauces made easy — the ideas that work harder than any single recipe.</p>
+        </div>
+        <button type="button" class="btn btn-secondary" data-action="learn">Open lessons →</button>
+      </section>
 
       <aside class="rescue-card">
         <div class="rescue-content">
@@ -96,6 +107,27 @@
         </div>
       </div>
     </section>
+
+    <section id="view-learn" class="view" hidden>
+      <div class="hero hero-compact">
+        <h1>Learn</h1>
+        <p class="hero-sub">Principles from a culinary school dropout who learned what actually matters at home: prep, methods, sauces, and how to rescue dinner.</p>
+      </div>
+      <div class="lesson-grid" id="lesson-grid" role="list"></div>
+    </section>
+
+    <section id="view-lesson" class="view" hidden>
+      <nav class="breadcrumb">
+        <button type="button" class="link-btn" data-action="learn">All lessons</button>
+        <span aria-hidden="true">/</span>
+        <span id="breadcrumb-lesson"></span>
+      </nav>
+      <article class="lesson-article" id="lesson-article"></article>
+      <div class="lesson-footer">
+        <button type="button" class="btn btn-ghost" data-action="learn">← Back to lessons</button>
+        <button type="button" class="btn btn-primary" data-action="home">Something wrong? Open triage</button>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -120,6 +152,7 @@
   <script src="js/data/frying.js"></script>
   <script src="js/data/rescue.js"></script>
   <script src="js/triage-data.js"></script>
+  <script src="js/lessons-data.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

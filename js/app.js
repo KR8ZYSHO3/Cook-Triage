@@ -9,7 +9,9 @@
 
   const views = {
     home: document.getElementById("view-home"),
-    triage: document.getElementById("view-triage")
+    triage: document.getElementById("view-triage"),
+    learn: document.getElementById("view-learn"),
+    lesson: document.getElementById("view-lesson")
   };
 
   const els = {
@@ -28,6 +30,10 @@
     btnStillStuck: document.getElementById("btn-still-stuck"),
     btnBackSymptom: document.getElementById("btn-back-symptom"),
     rescueLink: document.getElementById("rescue-link"),
+    lessonGrid: document.getElementById("lesson-grid"),
+    lessonArticle: document.getElementById("lesson-article"),
+    breadcrumbLesson: document.getElementById("breadcrumb-lesson"),
+    navBtns: document.querySelectorAll("[data-nav]"),
     progressSteps: document.querySelectorAll(".progress-step"),
     steps: {
       symptom: document.getElementById("step-symptom"),
@@ -195,6 +201,7 @@
   }
 
   function startCategory(categoryId, symptomId = null) {
+    setNav("triage");
     state.category = TRIAGE_DATA.find((c) => c.id === categoryId);
     state.symptom = symptomId;
     state.variant = null;
@@ -326,7 +333,68 @@
     state.symptom = null;
     state.variant = null;
     state.causeIndex = 0;
+    setNav("triage");
     showView("home");
+  }
+
+  function setNav(mode) {
+    els.navBtns.forEach((btn) => {
+      btn.classList.toggle("active", btn.dataset.nav === mode);
+    });
+  }
+
+  function showLearn() {
+    setNav("learn");
+    renderLessonGrid();
+    showView("learn");
+  }
+
+  function renderLessonGrid() {
+    if (!els.lessonGrid) return;
+    els.lessonGrid.innerHTML = LESSONS_DATA.map(
+      (lesson) => `
+        <button type="button" class="lesson-card" data-lesson="${lesson.id}" role="listitem">
+          <span class="lesson-icon" aria-hidden="true">${lesson.icon}</span>
+          <h3>${lesson.title}</h3>
+          <p>${lesson.subtitle}</p>
+          <span class="lesson-meta">${lesson.readTime}</span>
+        </button>
+      `
+    ).join("");
+  }
+
+  function openLesson(lessonId) {
+    const lesson = LESSONS_DATA.find((l) => l.id === lessonId);
+    if (!lesson || !els.lessonArticle) return;
+
+    setNav("learn");
+    els.breadcrumbLesson.textContent = lesson.title;
+
+    const sectionsHtml = lesson.sections
+      .map((sec) => {
+        let html = "";
+        if (sec.heading) html += `<h2>${sec.heading}</h2>`;
+        if (sec.body) html += sec.body;
+        if (sec.checklist) {
+          html += `<ul class="lesson-checklist">${sec.checklist.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+        }
+        return `<section class="lesson-section">${html}</section>`;
+      })
+      .join("");
+
+    els.lessonArticle.innerHTML = `
+      <header class="lesson-header">
+        <span class="lesson-header-icon" aria-hidden="true">${lesson.icon}</span>
+        <div>
+          <h1>${lesson.title}</h1>
+          <p class="lesson-tagline">${lesson.tagline}</p>
+          <p class="lesson-read-time">${lesson.readTime} read</p>
+        </div>
+      </header>
+      ${sectionsHtml}
+    `;
+
+    showView("lesson");
   }
 
   function restart() {
@@ -378,9 +446,23 @@
       return;
     }
 
+    const lessonBtn = e.target.closest("[data-lesson]");
+    if (lessonBtn) {
+      openLesson(lessonBtn.dataset.lesson);
+      return;
+    }
+
+    const navBtn = e.target.closest("[data-nav]");
+    if (navBtn) {
+      if (navBtn.dataset.nav === "learn") showLearn();
+      if (navBtn.dataset.nav === "triage") goHome();
+      return;
+    }
+
     const action = e.target.closest("[data-action]");
     if (action) {
       if (action.dataset.action === "home") goHome();
+      if (action.dataset.action === "learn") showLearn();
       if (action.dataset.action === "restart") restart();
     }
   });
