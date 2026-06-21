@@ -180,7 +180,7 @@ const LESSONS_DATA = [
         <p>Too salty after reducing? You concentrated the salt too — dilute with unsalted stock (CookTriage → flavor → too salty).</p>`
       },
       {
-        heading: "The French finish (what makes it taste "restaurant")",
+        heading: "The French finish (what makes it taste restaurant-level)",
         body: `<p>Three finishes that elevate any sauce — classical technique, zero snobbery:</p>
         <ul>
           <li><strong>Monter au beurre:</strong> whisk cold butter off heat — gloss + body</li>
