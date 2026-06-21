@@ -1,23 +1,27 @@
 # CookTriage
 
-**Symptom → cause → fix** for kitchen disasters.
+**Symptom → cause → fix** for kitchen disasters. Plus free lessons: mise en place, cooking methods, French sauces made easy.
 
-Live site: [kr8zyshoe3.github.io](https://kr8zyshoe3.github.io)
+Live site: [kr8zyshoe3.github.io/Cook-Triage](https://kr8zyshoe3.github.io/Cook-Triage/)
 
-## Enable GitHub Pages (quickstart)
+## Enable GitHub Pages (after rename)
 
-Follow [GitHub Pages quickstart](https://docs.github.com/en/pages/quickstart):
+Renaming the repo resets Pages. Turn it back on:
 
-1. This repo is already named `KR8ZYSHO3.github.io` (correct for a user site).
-2. Open **Settings → Pages**.
-3. **Source:** Deploy from a branch.
-4. **Branch:** `main` → `/ (root)` → Save.
-5. Visit [kr8zyshoe3.github.io](https://kr8zyshoe3.github.io) (can take up to 10 minutes).
+1. Open [Settings → Pages](https://github.com/KR8ZYSHO3/Cook-Triage/settings/pages)
+2. **Source:** Deploy from a branch
+3. **Branch:** `main` → `/ (root)` → **Save**
+4. Wait for green **"Your site is live at…"** (up to 10 minutes)
+5. URL: **https://kr8zyshoe3.github.io/Cook-Triage/**
 
-## Kitchen Rescue ($12)
+## Project site vs user site
 
-Update the payment link in `index.html` when your Ko-fi or Gumroad is ready.
+| Repo name | URL |
+|-----------|-----|
+| `Cook-Triage` (this repo) | `kr8zyshoe3.github.io/Cook-Triage/` |
+| `KR8ZYSHO3.github.io` | `kr8zyshoe3.github.io/` (root, no path) |
 
-## Edit triage content
+## Edit content
 
-Edit `js/triage-data.js` to add symptoms, causes, and fixes.
+- Triage flows: `js/data/*.js`
+- Lessons: `js/lessons-data.js`
