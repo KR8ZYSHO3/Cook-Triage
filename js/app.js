@@ -2,7 +2,9 @@
   const state = {
     category: null,
     symptom: null,
-    causeIndex: 0
+    variant: null,
+    causeIndex: 0,
+    searchQuery: ""
   };
 
   const views = {
@@ -12,15 +14,19 @@
 
   const els = {
     categoryGrid: document.getElementById("category-grid"),
+    searchInput: document.getElementById("search-input"),
+    searchResults: document.getElementById("search-results"),
+    statsBar: document.getElementById("stats-bar"),
     breadcrumbCategory: document.getElementById("breadcrumb-category"),
     symptomTitle: document.getElementById("symptom-title"),
-    symptomHint: document.getElementById("symptom-hint"),
+    symptomHint: document.getElementById("step-hint"),
     symptomOptions: document.getElementById("symptom-options"),
     causeCard: document.getElementById("cause-card"),
     fixCard: document.getElementById("fix-card"),
     btnAltCause: document.getElementById("btn-alt-cause"),
     btnToFix: document.getElementById("btn-to-fix"),
     btnStillStuck: document.getElementById("btn-still-stuck"),
+    btnBackSymptom: document.getElementById("btn-back-symptom"),
     rescueLink: document.getElementById("rescue-link"),
     progressSteps: document.querySelectorAll(".progress-step"),
     steps: {
@@ -29,6 +35,42 @@
       fix: document.getElementById("step-fix")
     }
   };
+
+  const searchIndex = buildSearchIndex();
+
+  function buildSearchIndex() {
+    const items = [];
+    TRIAGE_DATA.forEach((cat) => {
+      cat.symptoms.forEach((symptom) => {
+        const causeText = (symptom.causes || [])
+          .concat((symptom.variants || []).flatMap((v) => v.causes || []))
+          .map((c) => `${c.title} ${c.explanation}`)
+          .join(" ");
+        items.push({
+          catId: cat.id,
+          symptomId: symptom.id,
+          label: symptom.label,
+          category: cat.title,
+          haystack: `${symptom.label} ${cat.title} ${cat.description} ${causeText}`.toLowerCase()
+        });
+      });
+    });
+    return items;
+  }
+
+  function getStats() {
+    let symptoms = 0;
+    let causes = 0;
+    TRIAGE_DATA.forEach((cat) => {
+      cat.symptoms.forEach((s) => {
+        symptoms += 1;
+        const pool = s.causes || [];
+        const variantCauses = (s.variants || []).flatMap((v) => v.causes || []);
+        causes += pool.length + variantCauses.length;
+      });
+    });
+    return { categories: TRIAGE_DATA.length, symptoms, causes };
+  }
 
   function showView(name) {
     Object.values(views).forEach((v) => {
@@ -61,49 +103,176 @@
     return state.category.symptoms.find((s) => s.id === state.symptom);
   }
 
-  function getCurrentCause() {
+  function getActiveCauses() {
     const symptom = getCurrentSymptom();
-    return symptom.causes[state.causeIndex];
+    if (!symptom) return [];
+    if (state.variant && symptom.variants) {
+      const variant = symptom.variants.find((v) => v.id === state.variant);
+      return variant ? variant.causes : symptom.causes;
+    }
+    return symptom.causes || [];
   }
 
-  function renderCategories() {
-    els.categoryGrid.innerHTML = TRIAGE_DATA.map(
-      (cat) => `
+  function getCurrentCause() {
+    const causes = getActiveCauses();
+    return causes[state.causeIndex];
+  }
+
+  function likelihoodLabel(value) {
+    if (value === "most-likely") return "Most likely";
+    if (value === "common") return "Also common";
+    if (value === "less-common") return "Less common — still check";
+    return null;
+  }
+
+  function renderStats() {
+    if (!els.statsBar) return;
+    const s = getStats();
+    els.statsBar.textContent = `${s.categories} categories · ${s.symptoms} symptoms · ${s.causes} cause paths`;
+  }
+
+  function renderCategories(filter = "") {
+    const q = filter.trim().toLowerCase();
+    const matchedCatIds = q
+      ? new Set(
+          searchIndex
+            .filter((item) => item.haystack.includes(q))
+            .map((item) => item.catId)
+        )
+      : null;
+
+    const cats = matchedCatIds
+      ? TRIAGE_DATA.filter((c) => matchedCatIds.has(c.id))
+      : TRIAGE_DATA;
+
+    els.categoryGrid.innerHTML = cats
+      .map(
+        (cat) => `
         <button type="button" class="category-card" data-category="${cat.id}" role="listitem">
           <span class="category-icon" aria-hidden="true">${cat.icon}</span>
           <h3>${cat.title}</h3>
           <p>${cat.description}</p>
+          <span class="category-count">${cat.symptoms.length} symptoms</span>
         </button>
       `
-    ).join("");
-  }
-
-  function startCategory(categoryId) {
-    state.category = TRIAGE_DATA.find((c) => c.id === categoryId);
-    state.symptom = null;
-    state.causeIndex = 0;
-
-    els.breadcrumbCategory.textContent = state.category.title;
-    els.symptomTitle.textContent = "What's going on?";
-    els.symptomHint.textContent = state.category.hint;
-
-    els.symptomOptions.innerHTML = state.category.symptoms
-      .map(
-        (s) => `
-          <button type="button" class="option-btn" data-symptom="${s.id}">
-            ${s.label}
-          </button>
-        `
       )
       .join("");
 
+    renderSearchResults(q);
+  }
+
+  function renderSearchResults(q) {
+    if (!els.searchResults) return;
+    if (!q) {
+      els.searchResults.hidden = true;
+      els.searchResults.innerHTML = "";
+      return;
+    }
+
+    const hits = searchIndex.filter((item) => item.haystack.includes(q)).slice(0, 12);
+    if (!hits.length) {
+      els.searchResults.hidden = false;
+      els.searchResults.innerHTML = `<p class="search-empty">No matches. Try "salty", "mushy", "dry chicken", or "sauce split".</p>`;
+      return;
+    }
+
+    els.searchResults.hidden = false;
+    els.searchResults.innerHTML = `
+      <p class="search-label">Jump to symptom</p>
+      <div class="search-hit-list">
+        ${hits
+          .map(
+            (hit) => `
+          <button type="button" class="search-hit" data-jump-cat="${hit.catId}" data-jump-symptom="${hit.symptomId}">
+            <span class="search-hit-label">${hit.label}</span>
+            <span class="search-hit-cat">${hit.category}</span>
+          </button>
+        `
+          )
+          .join("")}
+      </div>
+    `;
+  }
+
+  function startCategory(categoryId, symptomId = null) {
+    state.category = TRIAGE_DATA.find((c) => c.id === categoryId);
+    state.symptom = symptomId;
+    state.variant = null;
+    state.causeIndex = 0;
+
+    els.breadcrumbCategory.textContent = state.category.title;
+
+    if (symptomId) {
+      const symptom = getCurrentSymptom();
+      if (symptom.variants && symptom.variants.length) {
+        renderVariantStep();
+      } else {
+        selectSymptom(symptomId, true);
+      }
+      showView("triage");
+      return;
+    }
+
+    renderSymptomStep();
     setProgress(1);
     showTriageStep("symptom");
     showView("triage");
   }
 
-  function selectSymptom(symptomId) {
+  function renderSymptomStep() {
+    els.symptomTitle.textContent = "What's going on?";
+    els.symptomHint.textContent = state.category.hint;
+    els.btnBackSymptom.hidden = true;
+
+    els.symptomOptions.innerHTML = state.category.symptoms
+      .map(
+        (s) => `
+          <button type="button" class="option-btn" data-symptom="${s.id}">
+            <span class="option-label">${s.label}</span>
+            ${s.variants ? `<span class="option-meta">${s.variants.length} branches</span>` : ""}
+          </button>
+        `
+      )
+      .join("");
+  }
+
+  function renderVariantStep() {
+    const symptom = getCurrentSymptom();
+    els.symptomTitle.textContent = "Narrow it down";
+    els.symptomHint.textContent = `Same symptom, different fixes depending on what you're making.`;
+    els.btnBackSymptom.hidden = false;
+
+    els.symptomOptions.innerHTML = symptom.variants
+      .map(
+        (v) => `
+          <button type="button" class="option-btn" data-variant="${v.id}">
+            ${v.label}
+          </button>
+        `
+      )
+      .join("");
+    setProgress(1);
+    showTriageStep("symptom");
+  }
+
+  function selectSymptom(symptomId, skipVariantCheck = false) {
     state.symptom = symptomId;
+    state.variant = null;
+    state.causeIndex = 0;
+
+    const symptom = getCurrentSymptom();
+    if (!skipVariantCheck && symptom.variants && symptom.variants.length) {
+      renderVariantStep();
+      return;
+    }
+
+    renderCause();
+    setProgress(2);
+    showTriageStep("cause");
+  }
+
+  function selectVariant(variantId) {
+    state.variant = variantId;
     state.causeIndex = 0;
     renderCause();
     setProgress(2);
@@ -112,24 +281,28 @@
 
   function renderCause() {
     const cause = getCurrentCause();
-    const symptom = getCurrentSymptom();
-    const altCount = symptom.causes.length;
+    const causes = getActiveCauses();
+    const badge = likelihoodLabel(cause.likelihood);
 
     els.causeCard.innerHTML = `
-      <h3>${cause.title}</h3>
+      <div class="cause-header">
+        <h3>${cause.title}</h3>
+        ${badge ? `<span class="likelihood-badge">${badge}</span>` : ""}
+      </div>
       <p>${cause.explanation}</p>
+      <p class="cause-counter">Cause ${state.causeIndex + 1} of ${causes.length}</p>
     `;
 
-    els.btnAltCause.hidden = altCount <= 1;
+    els.btnAltCause.hidden = causes.length <= 1;
     els.btnAltCause.textContent =
-      state.causeIndex < altCount - 1
-        ? "Try another cause"
+      state.causeIndex < causes.length - 1
+        ? "Doesn't fit — try next cause"
         : "Back to first cause";
   }
 
   function cycleCause() {
-    const symptom = getCurrentSymptom();
-    state.causeIndex = (state.causeIndex + 1) % symptom.causes.length;
+    const causes = getActiveCauses();
+    state.causeIndex = (state.causeIndex + 1) % causes.length;
     renderCause();
   }
 
@@ -141,6 +314,7 @@
         ${cause.fixes.map((f) => `<li>${f}</li>`).join("")}
       </ol>
       ${cause.tip ? `<div class="fix-tip"><strong>Next time:</strong> ${cause.tip}</div>` : ""}
+      ${cause.ifNotFixed ? `<div class="fix-escalate"><strong>Still broken?</strong> ${cause.ifNotFixed}</div>` : ""}
     `;
 
     setProgress(3);
@@ -150,6 +324,7 @@
   function goHome() {
     state.category = null;
     state.symptom = null;
+    state.variant = null;
     state.causeIndex = 0;
     showView("home");
   }
@@ -157,6 +332,15 @@
   function restart() {
     if (!state.category) return goHome();
     startCategory(state.category.id);
+  }
+
+  function backToSymptoms() {
+    state.variant = null;
+    state.symptom = null;
+    state.causeIndex = 0;
+    renderSymptomStep();
+    setProgress(1);
+    showTriageStep("symptom");
   }
 
   function scrollToRescue() {
@@ -170,6 +354,12 @@
   }
 
   document.addEventListener("click", (e) => {
+    const jump = e.target.closest("[data-jump-cat]");
+    if (jump) {
+      startCategory(jump.dataset.jumpCat, jump.dataset.jumpSymptom);
+      return;
+    }
+
     const categoryBtn = e.target.closest("[data-category]");
     if (categoryBtn) {
       startCategory(categoryBtn.dataset.category);
@@ -182,6 +372,12 @@
       return;
     }
 
+    const variantBtn = e.target.closest("[data-variant]");
+    if (variantBtn) {
+      selectVariant(variantBtn.dataset.variant);
+      return;
+    }
+
     const action = e.target.closest("[data-action]");
     if (action) {
       if (action.dataset.action === "home") goHome();
@@ -189,9 +385,18 @@
     }
   });
 
+  if (els.searchInput) {
+    els.searchInput.addEventListener("input", (e) => {
+      state.searchQuery = e.target.value;
+      renderCategories(state.searchQuery);
+    });
+  }
+
   els.btnAltCause.addEventListener("click", cycleCause);
   els.btnToFix.addEventListener("click", renderFix);
   els.btnStillStuck.addEventListener("click", scrollToRescue);
+  if (els.btnBackSymptom) els.btnBackSymptom.addEventListener("click", backToSymptoms);
 
+  renderStats();
   renderCategories();
 })();

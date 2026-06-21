@@ -25,7 +25,14 @@
     <section id="view-home" class="view active">
       <div class="hero">
         <h1>Something went wrong?<br>Let's fix it.</h1>
-        <p class="hero-sub">Pick what's happening. We'll walk you through the most likely causes and what to do <em>right now</em> — no panic, no starting over unless you have to.</p>
+        <p class="hero-sub">Search your symptom or pick a category. We walk through likely causes, branch by dish type when it matters, and tell you what to do <em>right now</em>.</p>
+        <p class="stats-bar" id="stats-bar"></p>
+      </div>
+
+      <div class="search-wrap">
+        <label class="search-label-visually-hidden" for="search-input">Search symptoms</label>
+        <input type="search" id="search-input" class="search-input" placeholder="Search: too salty, mushy rice, dry chicken, sauce split…" autocomplete="off">
+        <div id="search-results" class="search-results" hidden></div>
       </div>
 
       <div class="category-grid" id="category-grid" role="list"></div>
@@ -64,13 +71,14 @@
 
         <div id="step-symptom" class="triage-step active">
           <h2 id="symptom-title">What's going on?</h2>
-          <p class="step-hint" id="symptom-hint"></p>
+          <p class="step-hint" id="step-hint"></p>
           <div class="option-list" id="symptom-options" role="list"></div>
+          <button type="button" class="btn btn-ghost btn-back" id="btn-back-symptom" hidden>← Back to symptoms</button>
         </div>
 
         <div id="step-cause" class="triage-step" hidden>
-          <h2>Most likely cause</h2>
-          <p class="step-hint">Based on what you picked — this is where cooks usually went wrong.</p>
+          <h2>Diagnosis</h2>
+          <p class="step-hint">Ranked by how often this causes your symptom. If it doesn't fit, try the next cause.</p>
           <div class="cause-card" id="cause-card"></div>
           <div class="cause-nav">
             <button type="button" class="btn btn-ghost" id="btn-alt-cause">Try another cause</button>
@@ -97,6 +105,20 @@
     </div>
   </footer>
 
+  <script src="js/data/flavor.js"></script>
+  <script src="js/data/grains.js"></script>
+  <script src="js/data/pasta.js"></script>
+  <script src="js/data/sauces.js"></script>
+  <script src="js/data/meat.js"></script>
+  <script src="js/data/seafood.js"></script>
+  <script src="js/data/eggs.js"></script>
+  <script src="js/data/vegetables.js"></script>
+  <script src="js/data/heat-pan.js"></script>
+  <script src="js/data/baking.js"></script>
+  <script src="js/data/soups.js"></script>
+  <script src="js/data/dairy.js"></script>
+  <script src="js/data/frying.js"></script>
+  <script src="js/data/rescue.js"></script>
   <script src="js/triage-data.js"></script>
   <script src="js/app.js"></script>
 </body>
