@@ -31,7 +31,7 @@ const TRIAGE_STEP_IMAGES = {
 };
 
 const SITE_IMAGES = {
-  logoMark: "assets/images/logo-mark.jpg",
+  logoMark: "assets/images/logo-mark.png",
   hero: "assets/images/hero-illustration.jpg",
   ogCard: "assets/images/og-social-card.jpg",
   learnTeaser: "assets/images/learn-teaser.jpg",
