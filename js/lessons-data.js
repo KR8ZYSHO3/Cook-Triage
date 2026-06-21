@@ -3,9 +3,9 @@ const LESSONS_DATA = [
     id: "mise-en-place",
     icon: "📋",
     title: "Mise en place",
-    subtitle: "Everything in its place — the habit that changed everyday cooking",
-    readTime: "8 min",
-    tagline: "Prep is not chef theater. It's troubleshooting before anything goes wrong.",
+    subtitle: "Prep one real dish before you turn on the stove",
+    readTime: "12 min",
+    tagline: "You'll set up a simple stir-fry. No cooking until everything is ready.",
     relatedTriage: [
       { catId: "flavor", symptomId: "smoky-burnt-taste", label: "Burnt / smoky taste" },
       { catId: "sauces", symptomId: "split", label: "Split sauce" },
@@ -13,44 +13,173 @@ const LESSONS_DATA = [
     ],
     sections: [
       {
-        heading: "What it actually means at home",
-        body: `<p><strong>Mise en place</strong> (mees ahn plahs) literally means "everything in its place." In culinary school they make it look like monk-like precision. At home it means something simpler:</p>
-        <p><strong>Before heat touches the pan, you already know what happens next.</strong></p>
-        <p>That's it. You're not racing the clock while garlic burns because you were still chopping onions. You read the recipe like a procedure, pull what you need, prep in the order things hit the pan — and <em>then</em> you cook.</p>`
+        heading: "What this is (plain English)",
+        body: `<p><strong>Mise en place</strong> means "everything in its place." At home, that just means: <strong>read the recipe, pull your stuff, prep it, then cook.</strong></p>
+        <p>Most burnt garlic and split sauces happen because someone started cooking while still chopping. This lesson fixes that with one practice dish — a basic stir-fry setup you can copy for any recipe.</p>`
       },
       {
-        heading: "Why it felt like a cheat code",
-        body: `<p>Most kitchen disasters aren't mystery failures — they're <strong>timing failures</strong>. Mise en place fixes timing before it breaks:</p>
-        <ul>
-          <li><strong>Less panic</strong> — your hands know what's next</li>
-          <li><strong>Less burnt aromatics</strong> — garlic waits in a bowl, not on the cutting board</li>
-          <li><strong>Better seasoning</strong> — you taste because you're not juggling six tasks</li>
-          <li><strong>Actual troubleshooting</strong> — when something goes wrong, you have brain space to fix it</li>
-        </ul>
-        <p>Culinary school dropout or not — this one idea took cooking from survival mode to something you can repeat on a Tuesday night.</p>`
+        heading: "What you need",
+        ingredients: [
+          "1 chicken breast or 8 oz firm tofu",
+          "1 small onion",
+          "2 cloves garlic",
+          "2 tbsp soy sauce",
+          "1 tbsp water",
+          "1 tsp cornstarch (optional — helps sauce cling)",
+          "Cooked rice for serving (microwave pouch is fine)",
+          "Knife, cutting board, 2 small bowls, measuring spoons, wok or large skillet"
+        ],
+        ingredientsNote: "You are only prepping in this lesson. The stove stays off until the checklist is done."
       },
       {
-        heading: "The 10-minute home version",
-        body: `<p>You don't need 40 bowls. You need a system:</p>`
-      },
-      {
-        heading: "Checklist: before you turn on the stove",
-        interactive: true,
-        checklist: [
-          "Read the full recipe once — note when things get added and how long each step takes",
-          "Pull every ingredient and tool onto the counter (if it's not there, you find out now)",
-          "Prep wet and dry separately — pat meat dry, drain tofu, measure spices",
-          "Cut in order of cook time: onions first if they sweat 10 min; herbs last",
-          "Put sauces and liquids in measuring cups — no fumbling bottles mid-sear",
-          "Set a garbage bowl and a clean towel — messy board = slow board",
-          "Salt, pepper, acid, and fat within arm's reach for final adjustment",
-          "Ask: what's the one step I'll forget? (Wine? Butter finish? Rest meat?) — put a sticky note on the stove"
+        heading: "Do this now — step by step",
+        walkthrough: [
+          {
+            title: "Read the whole recipe once",
+            text: "Picture the order: protein first, then aromatics, then sauce, then rice. Note that garlic cooks in under 30 seconds — it cannot wait on the board.",
+            watch: "Any step that says \"add immediately\" — that ingredient gets prepped early."
+          },
+          {
+            title: "Pull everything onto the counter",
+            text: "Chicken/tofu, onion, garlic, soy, water, cornstarch, rice, pan, spatula, oil. Missing something? Find it now, not mid-sizzle.",
+            watch: "Empty counter space — you need room for bowls."
+          },
+          {
+            title: "Cut the protein",
+            text: "Chicken: bite-size pieces. Tofu: cubes. Pat very dry with paper towels. Put in a bowl.",
+            watch: "Wet protein steams instead of browning later."
+          },
+          {
+            title: "Prep aromatics",
+            text: "Slice onion. Mince garlic into a separate small bowl. Never leave garlic in a pile on the board.",
+            watch: "Garlic in its own bowl = it waits safely while onion cooks."
+          },
+          {
+            title: "Mix the sauce",
+            text: "In a cup: soy sauce + water + cornstarch. Stir until no starch lumps. Set next to the stove.",
+            watch: "Sauce ready before heat — no fumbling bottles when the pan is hot."
+          },
+          {
+            title: "Final check",
+            text: "Towel for spills. Garbage bowl. Salt within reach. Sticky note if you'll forget rice: \"RICE FIRST.\" Only now — turn on the burner.",
+            watch: "If you feel rushed turning on the stove, something is still unprepped."
+          }
         ]
       },
       {
-        heading: "Mise en place + CookTriage",
-        body: `<p>Prep <em>is</em> triage upstream. Burnt garlic? Often no mise. Split sauce? Often added dairy while scrambling something else. Dry chicken? Often no thermometer ready because you were still trimming.</p>
-        <p>When a dish fails, ask: <strong>would prep have prevented this?</strong> If yes, update your checklist for that dish — that's how you build personal recipes that actually work.</p>`
+        heading: "You're done when…",
+        body: `<ul>
+          <li>Every ingredient is cut, measured, or in a bowl</li>
+          <li>Garlic is not sitting on the cutting board</li>
+          <li>Sauce is mixed and the pan is out</li>
+          <li>You could cook the whole dish without opening a new cabinet</li>
+        </ul>
+        <p>That's mise en place. Same loop for pasta night, soup, or anything else.</p>`
+      },
+      {
+        heading: "Checklist: save this for next time",
+        interactive: true,
+        checklist: [
+          "Read recipe once — note fast steps (garlic, herbs, butter finish)",
+          "All ingredients on counter",
+          "Protein cut and patted dry",
+          "Aromatics in bowls, not on the board",
+          "Liquids measured in cups",
+          "Pan and tools out",
+          "Only then: turn on heat"
+        ]
+      },
+      {
+        heading: "The science behind it",
+        science: true,
+        body: `<p>Kitchen disasters are usually <strong>timing failures</strong>, not skill failures. Your brain can only track so many tasks. When prep isn't done, you enter <strong>cognitive overload</strong> — garlic burns while you hunt for soy sauce.</p>
+        <p>Separating prep from cooking also separates <strong>wet work</strong> (chopping, measuring) from <strong>dry heat work</strong> (browning). Dry surfaces need attention the moment they hit the pan. Mise en place guarantees that attention is available.</p>
+        <p>Professional kitchens run on this for the same reason hospitals run on checklists: predictable order beats heroic panic.</p>`
+      }
+    ]
+  },
+  {
+    id: "maillard-reaction",
+    icon: "🥩",
+    title: "The Maillard reaction",
+    subtitle: "See browning happen — one pan, two pieces, big difference",
+    readTime: "15 min",
+    tagline: "Brown food tastes better. This lesson shows you exactly why drying matters.",
+    relatedTriage: [
+      { catId: "heat-pan", symptomId: "burnt-outside-raw-inside", label: "Burnt outside, raw inside" },
+      { catId: "heat-pan", symptomId: "stuck", label: "Food stuck to pan" },
+      { catId: "meat", symptomId: "dry-chicken", label: "Dry chicken" }
+    ],
+    sections: [
+      {
+        heading: "What this is (plain English)",
+        body: `<p>The <strong>Maillard reaction</strong> (my-YAR, named after a French scientist) is what creates brown crust on seared meat, roasted vegetables, and toast. It's the savory, roasty flavor people chase.</p>
+        <p>It is <em>not</em> the same as burning — it's controlled browning. You need three things: <strong>dry surface, hot pan, and patience.</strong> This lesson proves it with a side-by-side test you can eat when you're done.</p>`
+      },
+      {
+        heading: "What you need",
+        ingredients: [
+          "2 chicken thighs (skin on) OR 2 large portobello mushroom caps",
+          "1 tbsp neutral oil (vegetable, canola, avocado)",
+          "Salt and pepper",
+          "Paper towels",
+          "Heavy skillet or cast iron pan",
+          "Spatula"
+        ],
+        ingredientsNote: "Thighs are forgiving for beginners. Mushrooms work great if you don't eat meat — same lesson, same browning rules."
+      },
+      {
+        heading: "Do this now — step by step",
+        walkthrough: [
+          {
+            title: "Split your test pieces",
+            text: "You need two similar pieces. Pat piece #1 completely dry with paper towels — really dry. Leave piece #2 damp (rinse and don't dry it). Salt both lightly.",
+            watch: "Piece #1 should look matte. Piece #2 should look wet."
+          },
+          {
+            title: "Heat the pan empty",
+            text: "Medium-high heat for 2–3 minutes. Add oil — it should shimmer and move easily, not smoke wildly.",
+            watch: "Cold pan + wet food = steam, not brown."
+          },
+          {
+            title: "Add the dry piece first",
+            text: "Lay piece #1 away from you. Do not move it for 3–4 minutes. Listen for sizzle — steady, not angry popping.",
+            watch: "Golden brown edge creeping up the side. That's Maillard starting."
+          },
+          {
+            title: "Flip once",
+            text: "When #1 releases easily from the pan (gentle nudge with spatula), flip. Cook second side 3 minutes. Move to a plate.",
+            watch: "If it fights the pan, it's not ready — wait 30 more seconds."
+          },
+          {
+            title: "Add the wet piece",
+            text: "Same pan, same heat. Lay piece #2 in. Notice: louder initial sizzle, then it goes quiet. Steam. Less color.",
+            watch: "Pale, grey-ish look instead of deep gold. That's moisture blocking browning."
+          },
+          {
+            title: "Compare and taste",
+            text: "Finish cooking #2 through (chicken to 165°F internal). Taste both. Smell both. The dry-seared piece should taste deeper, nuttier, more savory.",
+            watch: "Color difference = flavor difference. Your eyes are telling you the story."
+          }
+        ]
+      },
+      {
+        heading: "You're done when…",
+        body: `<ul>
+          <li>Piece #1 is noticeably darker than piece #2</li>
+          <li>You can taste the difference — deeper flavor on the dry-seared one</li>
+          <li>You understand: brown isn't luck, it's dry + heat + time</li>
+        </ul>
+        <p>From here, every sear, roast, and stir-fry uses the same rule: <strong>dry the food, hot the pan, don't crowd.</strong></p>`
+      },
+      {
+        heading: "The science behind it",
+        science: true,
+        body: `<p>The Maillard reaction happens when <strong>amino acids</strong> (from protein) and <strong>reducing sugars</strong> react under dry heat, roughly 285–330°F / 140–165°C. Hundreds of new flavor compounds form — that's the roasty, meaty, coffee-like notes.</p>
+        <p><strong>Water stops it.</strong> Until surface moisture evaporates, food stays near 212°F / 100°C (boiling). The pan spends its energy steaming, not browning. Patting dry shortcuts that step.</p>
+        <p><strong>Don't confuse Maillard with caramelization.</strong> Caramelization is sugars alone breaking down (onions, carrots). Maillard needs protein. Both taste great — most roasted vegetables get both.</p>
+        <p><strong>Crowding the pan</strong> drops temperature and traps steam — same effect as wet food. Leave space; work in batches if needed.</p>
+        <p>Burnt black is past Maillard — acrid and bitter. Golden to deep brown is the target. If outside races ahead of inside, lower heat after the sear and finish gentler (oven, lid, lower burner).</p>`
       }
     ]
   },
@@ -58,61 +187,89 @@ const LESSONS_DATA = [
     id: "cooking-methods",
     icon: "🔥",
     title: "Cooking methods",
-    subtitle: "Know the method, know what \"done\" looks like — and what went wrong",
-    readTime: "10 min",
-    tagline: "Recipes are examples. Methods are the rules.",
+    subtitle: "Same broccoli, two ways — feel the difference",
+    readTime: "18 min",
+    tagline: "Dry heat browns. Wet heat softens. You'll cook both in one session.",
     relatedTriage: [
       { catId: "heat-pan", symptomId: "burnt-outside-raw-inside", label: "Burnt outside, raw inside" },
-      { catId: "heat-pan", symptomId: "stuck", label: "Food stuck to pan" },
+      { catId: "vegetables", symptomId: "mushy", label: "Mushy vegetables" },
       { catId: "frying", symptomId: "not-crispy", label: "Not crispy / soggy fry" }
     ],
     sections: [
       {
-        heading: "The unlock",
-        body: `<p>Once you name the <strong>method</strong> you're using, cooking stops being guesswork. You know what heat does, what texture you're chasing, and which CookTriage path to open when it fails.</p>`
+        heading: "What this is (plain English)",
+        body: `<p>Every recipe uses one of a few <strong>methods</strong>: dry heat (roast, sear), moist heat (steam, simmer), or both (sear then braise). The method tells you what to watch for and what "done" looks like.</p>
+        <p>Instead of memorizing lists, you'll cook <strong>the same vegetable two ways</strong> and compare. Once you feel the difference, recipe instructions make sense.</p>`
       },
       {
-        heading: "Dry heat — browning is the point",
-        body: `<p><strong>Sauté, sear, roast, bake, broil, stir-fry</strong></p>
-        <p>Goal: evaporate surface moisture, trigger Maillard browning (that savory crust), cook through with hot air or contact.</p>
+        heading: "What you need",
+        ingredients: [
+          "1 head broccoli (or 2 zucchini — your choice)",
+          "2 tbsp oil",
+          "Salt and pepper",
+          "Pot with lid + steamer basket OR microwave-safe bowl with 2 tbsp water",
+          "Baking sheet",
+          "Oven or toaster oven"
+        ],
+        ingredientsNote: "Split the vegetable in half — same size florets on each side so the comparison is fair."
+      },
+      {
+        heading: "Do this now — moist heat half",
+        walkthrough: [
+          {
+            title: "Prep even pieces",
+            text: "Cut broccoli into same-size florets. Divide into two equal piles — pile A and pile B.",
+            watch: "Similar size = similar cook time."
+          },
+          {
+            title: "Steam pile A",
+            text: "Basket over boiling water, lid on, medium heat. Or microwave: pile A + 2 tbsp water, covered, 3–4 minutes.",
+            watch: "Bright green color, tender when pierced with a fork, no browning."
+          },
+          {
+            title: "Taste pile A",
+            text: "Salt lightly. Notice: clean broccoli flavor, soft texture, watery mouthfeel. Hard to burn if you don't walk away for an hour.",
+            watch: "Gentle, even cooking — that's moist heat's superpower."
+          }
+        ]
+      },
+      {
+        heading: "Do this now — dry heat half",
+        walkthrough: [
+          {
+            title: "Heat oven to 425°F / 220°C",
+            text: "Toss pile B with oil, salt, pepper. Spread on baking sheet — not piled up.",
+            watch: "Single layer with space between pieces."
+          },
+          {
+            title: "Roast 18–22 minutes",
+            text: "Flip once halfway. Edges should char slightly. Inside tender, outside crisp and brown.",
+            watch: "Brown tips and nutty smell — Maillard + caramelization on the edges."
+          },
+          {
+            title: "Taste pile B",
+            text: "Compare to pile A. Roasted should taste sweeter, deeper, almost nutty. Texture firmer on the outside.",
+            watch: "Same vegetable, completely different eating experience."
+          }
+        ]
+      },
+      {
+        heading: "Name the method before you cook",
+        body: `<p>Before any recipe, ask one question: <strong>Is this trying to brown, or gently cook through?</strong></p>
         <ul>
-          <li><strong>When to use:</strong> vegetables you want caramelized, meat with a crust, anything that should taste "roasty"</li>
-          <li><strong>Done looks like:</strong> golden to deep brown exterior; interior hits safe temp (use a thermometer on meat)</li>
-          <li><strong>Common fails:</strong> crowded pan (steams instead of browns), wet food, heat too high (burnt outside, raw inside)</li>
-        </ul>`
+          <li><strong>Dry heat</strong> — sear, roast, bake, stir-fry: dry surface, color, crust</li>
+          <li><strong>Moist heat</strong> — boil, simmer, steam, poach: gentle, even, hard to burn</li>
+          <li><strong>Combo</strong> — brown chicken, then add stock and simmer covered: crust + tenderness</li>
+        </ul>
+        <p>Wrong method = wrong result. Mushy roasted veg? Too much steam in the oven (crowded pan). Bland steamed veg? That's normal — moist heat doesn't brown; add butter, acid, or roast finish.</p>`
       },
       {
-        heading: "Moist heat — gentle and forgiving",
-        body: `<p><strong>Boil, simmer, poach, steam, braise (wet stage)</strong></p>
-        <p>Goal: cook with water or steam — even, gentle, hard to burn if you pay attention.</p>
-        <ul>
-          <li><strong>When to use:</strong> tough cuts (braise), delicate fish (poach/steam), grains, soups, blanching veg</li>
-          <li><strong>Done looks like:</strong> tender bite, not mush; fish flakes; liquid reduced to intended thickness</li>
-          <li><strong>Common fails:</strong> rolling boil when simmer asked (mushy veg), lid off too long (reduced to nothing)</li>
-        </ul>`
-      },
-      {
-        heading: "Combination — restaurant tricks at home",
-        body: `<p><strong>Sear then braise, roast then glaze, stir-fry with splash of stock</strong></p>
-        <p>Goal: crust + tenderness, or color + sauce in one pan.</p>
-        <ul>
-          <li><strong>Pattern:</strong> dry heat for color → add liquid → moist heat until done → reduce or finish with fat/acid</li>
-          <li><strong>Example:</strong> brown chicken thighs → wine + stock → simmer covered → reduce sauce → butter finish</li>
-          <li><strong>Common fails:</strong> skipping the sear (flat flavor), sauce never reduced (watery)</li>
-        </ul>`
-      },
-      {
-        heading: "Fat as the medium",
-        body: `<p><strong>Deep fry, shallow fry, confit-style low fry</strong></p>
-        <p>Goal: crisp shell or rich texture; fat carries flavor and heat fast.</p>
-        <ul>
-          <li><strong>Key rule:</strong> dry surface + right oil temp (350°F zone for most frying)</li>
-          <li><strong>Common fails:</strong> soggy (oil too cool), greasy (oil too cool or crowded), splatter (wet food)</li>
-        </ul>`
-      },
-      {
-        heading: "Pick the method first",
-        body: `<p>Before you follow a recipe, ask: <strong>which method is this really?</strong> That tells you what to watch, when to stir, and when to leave it alone. Pair that with mise en place and you're cooking from principles — not hoping the recipe author guessed your stove right.</p>`
+        heading: "The science behind it",
+        science: true,
+        body: `<p><strong>Moist heat</strong> transfers energy through water or steam at roughly 212°F / 100°C (at sea level). Food cooks evenly; proteins denature gently; starches hydrate. Little browning because water keeps surface temperature capped until it boils off.</p>
+        <p><strong>Dry heat</strong> lets surface temperature climb higher — enabling Maillard and caramelization. Air and metal conduct heat differently than steam: outside cooks faster than inside, which is why you get crust + tender center (or burnt outside / raw inside if heat is wrong).</p>
+        <p><strong>Combination cooking</strong> uses dry heat first for flavor compounds (fond in the pan, browned exterior), then moist heat to dissolve collagen in tough cuts (braising) or cook through without drying out.</p>
+        <p>Pick the method that matches what you want to eat, not what the recipe title says. A "healthy" steamed dinner that tastes flat? Finish with acid and fat. A "crispy" oven dish that's soggy? More heat, more space, drier surface.</p>`
       }
     ]
   },
@@ -120,9 +277,9 @@ const LESSONS_DATA = [
     id: "french-sauces",
     icon: "🥄",
     title: "French sauces made easy",
-    subtitle: "Mother sauces without the fear — formulas you can actually use tonight",
-    readTime: "14 min",
-    tagline: "Classical French isn't about fancy. It's about knowing three moves.",
+    subtitle: "Make a pan sauce from scratch — five ingredients, one pan",
+    readTime: "20 min",
+    tagline: "This is the mother of weeknight sauces. Do it once, use it forever.",
     relatedTriage: [
       { catId: "sauces", symptomId: "split", label: "Curdled / split sauce" },
       { catId: "sauces", symptomId: "grainy-flour", label: "Grainy flour sauce" },
@@ -130,92 +287,83 @@ const LESSONS_DATA = [
     ],
     sections: [
       {
-        heading: "Forget what culinary school did to you",
-        body: `<p>French sauce lore sounds intimidating: mother sauces, daughter sauces, roux ratios, clarifying butter. Most home cooks need <strong>three ideas</strong>, not a textbook:</p>
-        <ol>
-          <li><strong>Pan sauce</strong> — fond + liquid + finish (your weeknight MVP)</li>
-          <li><strong>Roux sauces</strong> — fat + flour + liquid (creamy soups, mac, gravies)</li>
-          <li><strong>Emulsions</strong> — fat + water held together by whisking or blender (hollandaise, vinaigrette)</li>
-        </ol>
-        <p>Everything else is a variation. Seriously.</p>`
+        heading: "What this is (plain English)",
+        body: `<p>French sauce anxiety is real. At home you need <strong>one move</strong> first: the <strong>pan sauce</strong>. Brown something, splash liquid, scrape the pan, reduce, finish with butter. That's it.</p>
+        <p>Roux and hollandaise come later. This lesson walks you through a pan sauce you can pour over chicken, pork, mushrooms, or tofu tonight.</p>`
       },
       {
-        heading: "The mother sauce secret (home cook translation)",
-        body: `<p>Escoffier's "mothers" — béchamel, velouté, espagnole, hollandaise, tomato — are just <strong>templates</strong>:</p>
-        <ul>
-          <li><strong>Béchamel:</strong> roux + milk → Mornay adds cheese, you add nutmeg</li>
-          <li><strong>Velouté:</strong> roux + light stock → mushroom sauce adds reduction</li>
-          <li><strong>Espagnole:</strong> brown stock + brown roux → home version is pan gravy</li>
-          <li><strong>Hollandaise:</strong> butter emulsified into yolk + acid → blender method below</li>
-          <li><strong>Tomato:</strong> reduced tomato + aromatics → you already make this as "pasta sauce"</li>
+        heading: "What you need",
+        ingredients: [
+          "2 chicken thighs or 2 pork chops (bone-in is fine)",
+          "1 tbsp oil",
+          "½ cup chicken stock, wine, or even water",
+          "1 tbsp cold butter, cut into cubes",
+          "Salt, pepper",
+          "Optional: 1 shallot or garlic clove, lemon wedge, teaspoon mustard"
+        ],
+        ingredientsNote: "Measure stock and butter before you sear — pan sauce happens fast at the end."
+      },
+      {
+        heading: "Do this now — step by step",
+        walkthrough: [
+          {
+            title: "Pat meat dry, salt it",
+            text: "Dry surface = better browning (see Maillard lesson). Salt both sides.",
+            watch: "Matte, not shiny."
+          },
+          {
+            title: "Sear the protein",
+            text: "Hot pan, oil shimmers. Lay meat in, don't move 3–4 minutes. Flip, sear second side. Cook through or finish in oven. Move meat to a plate to rest.",
+            watch: "Brown stuck-on bits in the pan — that's fond. It's free flavor."
+          },
+          {
+            title: "Pour off extra fat",
+            text: "Leave a thin film in the pan. If there's a pool of grease, tip it out. Too much fat = greasy sauce.",
+            watch: "Pan should look shiny, not swimming."
+          },
+          {
+            title: "Deglaze",
+            text: "Medium-high heat. Optional: sizzle shallot 30 seconds. Add stock/wine — it will steam and bubble. Scrape every brown bit with a wooden spoon.",
+            watch: "Fond dissolving into the liquid — pan getting cleaner."
+          },
+          {
+            title: "Reduce",
+            text: "Simmer 2–4 minutes until slightly thicker than water. Taste. It should be savory, not watery.",
+            watch: "Sauce coats the spoon lightly. It thickens more when butter goes in."
+          },
+          {
+            title: "Finish off heat",
+            text: "Remove pan from burner. Whisk in cold butter one cube at a time. Season: salt, pepper, squeeze of lemon. Pour over rested meat.",
+            watch: "Sauce goes glossy. Butter off heat prevents splitting."
+          }
+        ]
+      },
+      {
+        heading: "You're done when…",
+        body: `<ul>
+          <li>Sauce is glossy and coats the back of a spoon</li>
+          <li>It tastes savory, bright (lemon helps), not greasy</li>
+          <li>You can name the four steps: fond → deglaze → reduce → butter</li>
         </ul>
-        <p>You're not failing French cuisine if you make a pan sauce instead of espagnole. You're making the <em>useful</em> version.</p>`
+        <p>Split or greasy? Open CookTriage → Sauces. Grainy flour sauce is a different path (roux) — try that next when you want mac-and-cheese thickness.</p>`
       },
       {
-        heading: "Pan sauce — learn this one first",
-        body: `<p><strong>The 5-minute restaurant move in one pan:</strong></p>
-        <ol>
-          <li>Cook protein or veg — leave the brown bits (fond) in the pan. Pour off excess fat if there's a pool.</li>
-          <li><strong>Deglaze:</strong> medium-high heat, splash wine, stock, or even water — scrape fond with wooden spoon.</li>
-          <li><strong>Reduce:</strong> simmer until it coats the back of a spoon (thinner than you think — it thickens as it cools).</li>
-          <li><strong>Finish off heat:</strong> cold butter whisked in, or cream, or mustard — season with salt, pepper, lemon.</li>
-        </ol>
-        <p>Variations: shallots in step 2, herbs at finish, capers for brightness, soy + butter for fusion. Same skeleton every time.</p>
-        <p><strong>Split or greasy?</strong> → Open CookTriage → Sauces → pick your symptom.</p>`
-      },
-      {
-        heading: "Roux — the thickener that doesn't lump (if you're patient)",
-        body: `<p><strong>Equal parts fat + flour, cooked, then liquid added slowly.</strong></p>
-        <ul>
-          <li><strong>White roux</strong> (cooked 1–2 min): béchamel, cheese sauce, chowder base</li>
-          <li><strong>Blond roux</strong> (3–5 min): velouté-style, lighter gravies</li>
-          <li><strong>Brown roux</strong> (8+ min, stir): deeper gravy — nutty, less thickening power per spoon</li>
-        </ul>
-        <p><strong>Home formula:</strong> 2 tbsp butter + 2 tbsp flour in pan → whisk 1 cup liquid (milk or stock) in streams → simmer until thick → season.</p>
-        <p>Grainy? Flour hit boiling liquid without roux first, or you didn't whisk enough. Fix in CookTriage → Sauces → grainy.</p>`
-      },
-      {
-        heading: "Hollandaise without fear (blender method)",
-        body: `<p>Classic double-boiler hollandaise punishes you for looking away. Blender version forgives:</p>
-        <ol>
-          <li>Blend 3 egg yolks + 1 tbsp lemon juice + pinch salt 10 seconds</li>
-          <li>Melt 1 stick butter until hot and foaming (clarified-ish is fine, not required)</li>
-          <li>With blender on <strong>low</strong>, pour butter in thin stream — sauce thickens in 30 seconds</li>
-          <li>Taste. Lemon, salt, cayenne if you want</li>
-        </ol>
-        <p>Keep warm, not hot. Broken? Cool shock + blend again, or new yolk + drip broken sauce in. Eggs Benedict night: saved.</p>`
-      },
-      {
-        heading: "Reduction — sauce by concentration",
-        body: `<p><strong>Simmer until flavor intensifies.</strong> Wine, balsamic, cream, stock — same physics.</p>
-        <ul>
-          <li>Wide pan = faster reduction (more surface area)</li>
-          <li>Taste as you go — reduces = saltier and sweeter</li>
-          <li>Finish with cold butter for gloss (monté)</li>
-        </ul>
-        <p>Too salty after reducing? You concentrated the salt too — dilute with unsalted stock (CookTriage → flavor → too salty).</p>`
-      },
-      {
-        heading: "The French finish (what makes it taste restaurant-level)",
-        body: `<p>Three finishes that elevate any sauce — classical technique, zero snobbery:</p>
-        <ul>
-          <li><strong>Monter au beurre:</strong> whisk cold butter off heat — gloss + body</li>
-          <li><strong>Liaison:</strong> cream or egg yolk tempered in (never boil after)</li>
-          <li><strong>Acid at the end:</strong> lemon or vinegar — wakes everything up</li>
-        </ul>
-        <p>Mise en place your sauce components before you sear the protein. Pan sauce happens in the 3 minutes while meat rests — if butter and lemon are already measured, you look like you went to school. You just went to CookTriage.</p>`
-      },
-      {
-        heading: "Quick reference card",
+        heading: "Quick reference — three sauce types",
         interactive: true,
         checklist: [
-          "Pan sauce: fond → deglaze → reduce → butter off heat",
+          "Pan sauce: brown in pan → liquid → scrape → reduce → butter off heat",
           "Roux sauce: equal butter + flour → whisk liquid slowly → simmer thick",
-          "Emulsion: blender hollandaise or vinaigrette 3:1 oil to acid, drizzle while whisking",
-          "Never boil cream or egg sauces after they're in",
-          "Split sauce? Off heat, blend or cold shock — don't panic",
-          "Taste at every stage — French sauce is seasoning in layers"
+          "Blender hollandaise: yolk + lemon → drizzle hot butter while blending"
         ]
+      },
+      {
+        heading: "The science behind it",
+        science: true,
+        body: `<p><strong>Fond</strong> is concentrated Maillard product — proteins and sugars caramelized on the pan. Deglazing dissolves those into liquid, creating instant umami.</p>
+        <p><strong>Reduction</strong> boils off water, concentrating flavor and thickening slightly. As water leaves, salt and acid taste stronger — season at the end.</p>
+        <p><strong>Monter au beurre</strong> (whisking cold butter off heat) emulsifies fat into the sauce — tiny butter droplets suspended in liquid = glossy body. High heat breaks the emulsion → greasy or split sauce.</p>
+        <p><strong>Roux</strong> (butter + flour cooked, then liquid) uses starch gelatinization to thicken — different physics, more stable for creamy soups. <strong>Hollandaise</strong> is a fat-in-water emulsion held by egg lecithin — temperature-sensitive.</p>
+        <p>Escoffier's "mother sauces" are just templates for these reactions. Pan sauce is the useful descendant of espagnole. You're not skipping French technique — you're using the version that fits a Tuesday.</p>`
       }
     ]
   },
@@ -223,9 +371,9 @@ const LESSONS_DATA = [
     id: "rescue-mindset",
     icon: "🧠",
     title: "The rescue mindset",
-    subtitle: "Symptom → cause → fix — how to think when dinner is going sideways",
-    readTime: "6 min",
-    tagline: "You don't need a new recipe. You need a diagnosis.",
+    subtitle: "Fix oversalted soup — practice the loop on real food",
+    readTime: "12 min",
+    tagline: "Symptom → cause → fix. You'll taste your way out of a common disaster.",
     relatedTriage: [
       { catId: "rescue", symptomId: "whole-meal-wrong", label: "Whole meal feels wrong" },
       { catId: "flavor", symptomId: "too-salty", label: "Too salty" },
@@ -233,23 +381,72 @@ const LESSONS_DATA = [
     ],
     sections: [
       {
-        heading: "Stop, don't panic-scrap",
-        body: `<p>The instinct is to throw it out or start over. First: <strong>name the symptom.</strong> Too salty? Mushy? Split? Burnt smell but top looks OK? Each has a different fix path — and most don't require a full restart.</p>`
+        heading: "What this is (plain English)",
+        body: `<p>When dinner goes wrong, most people panic or start over. <strong>Rescue mindset</strong> means: name the symptom, guess the cause, try the smallest fix, taste again.</p>
+        <p>You'll practice on <strong>oversalted soup</strong> — the most common "I ruined it" moment. If your soup is fine, deliberately add 1 tsp salt too much to a cup of it. Safe lab.</p>`
       },
       {
-        heading: "The troubleshooting loop",
-        body: `<ol>
-          <li><strong>Symptom</strong> — what do you taste, see, or smell?</li>
-          <li><strong>Cause</strong> — what step likely created this? (heat, timing, ingredient, method)</li>
-          <li><strong>Fix</strong> — smallest intervention first (dilute, balance, transfer off burnt bottom, re-crisp)</li>
-          <li><strong>Re-taste</strong> — did it work? If not, try next cause</li>
-        </ol>
-        <p>That's CookTriage in one loop. Culinary school teaches mother sauces; real kitchens teach <em>this</em>.</p>`
+        heading: "What you need",
+        ingredients: [
+          "2–3 cups soup, stew, or broth (homemade or canned)",
+          "1 cup water or unsalted stock",
+          "1 small potato (optional — for the myth test)",
+          "Acid: lemon wedge or splash of vinegar",
+          "Starch: cooked rice, pasta, or a raw potato diced small",
+          "Spoon for tasting"
+        ],
+        ingredientsNote: "Practice on a portion, not the whole pot — easier to learn without risking dinner."
       },
       {
-        heading: "When to actually abandon ship",
-        body: `<p>Discard when: acrid burnt through the whole pot, raw meat cross-contamination, or fish that's turned. Repurpose when: dry meat (shred into sauce), mushy rice (fried rice tomorrow), broken sauce (strain and rebuild).</p>
-        <p>Knowing the difference saves money and ego.</p>`
+        heading: "Do this now — the rescue loop",
+        walkthrough: [
+          {
+            title: "Name the symptom",
+            text: "Taste the soup. Say it out loud: \"Too salty.\" Not \"it's ruined\" — specific words lead to specific fixes.",
+            watch: "Salt hits the front of the tongue, makes you want water."
+          },
+          {
+            title: "Guess the cause",
+            text: "Reduced too long? Salty stock? Added salt before tasting? Causes matter for next time — right now, fix the symptom.",
+            watch: "Reduction concentrates salt — same salt, less water."
+          },
+          {
+            title: "Fix #1 — dilute",
+            text: "Add unsalted liquid in small amounts: ¼ cup water/stock, stir, taste. Repeat until almost right.",
+            watch: "Flavor gets milder but also thinner — that's the tradeoff."
+          },
+          {
+            title: "Fix #2 — bulk (if dilute made it watery)",
+            text: "Add absorbent bulk: cooked rice, pasta, diced potato, more vegetables. They take up salt in the bowl, not magically from the pot.",
+            watch: "Per spoonful, it tastes less salty because there's more stuff."
+          },
+          {
+            title: "Fix #3 — balance",
+            text: "Tiny acid (lemon/vinegar) or fat (butter, cream) can make salt <em>feel</em> less aggressive. Does not remove salt — changes perception.",
+            watch: "Small splash. Taste. Stop before it tastes sour."
+          },
+          {
+            title: "Re-taste and decide",
+            text: "Better? Serve. Still bad? Try next cause in CookTriage → Flavor → Too salty. Only discard if acrid burnt or unsafe — not because it's merely salty.",
+            watch: "Most soups survive. Pride is usually what got oversalted."
+          }
+        ]
+      },
+      {
+        heading: "You're done when…",
+        body: `<ul>
+          <li>You ran dilute → bulk → balance without throwing the pot away</li>
+          <li>You can explain the loop: symptom, cause, fix, re-taste</li>
+          <li>You know a potato in the pot does <em>not</em> pull salt out (myth)</li>
+        </ul>`
+      },
+      {
+        heading: "The science behind it",
+        science: true,
+        body: `<p><strong>Perceived saltiness</strong> depends on sodium concentration in the liquid that touches your tongue. Dilution lowers that concentration — physics, not magic.</p>
+        <p><strong>Potatoes in soup</strong> absorb seasoned liquid; they don't selectively extract sodium ions. Eating the potato tastes salty because the liquid it soaked up is salty. Bulk helps by increasing non-salty mass per bite.</p>
+        <p><strong>Acid and fat</strong> don't remove NaCl — they shift flavor balance. Acid adds competing brightness; fat coats the palate. Both tricks make salt less dominant subjectively.</p>
+        <p><strong>When to abandon:</strong> acrid burnt (volatile bitter compounds throughout), cross-contamination, or spoilage. Everything else is usually a salvage project — shredded dry meat into sauce, mushy rice into fried rice tomorrow, broken sauce strained and rebuilt.</p>`
       }
     ]
   },
@@ -257,9 +454,9 @@ const LESSONS_DATA = [
     id: "dropout-to-dinner",
     icon: "🎓",
     title: "Dropout to dinner",
-    subtitle: "What culinary school taught me — and what home cooking actually needed",
-    readTime: "7 min",
-    tagline: "I didn't finish school. I finished learning what works on a Tuesday.",
+    subtitle: "One complete meal that uses everything you've learned",
+    readTime: "25 min",
+    tagline: "Mise → sear → pan sauce. The Tuesday night version of culinary school.",
     relatedTriage: [
       { catId: "flavor", symptomId: "too-salty", label: "Too salty" },
       { catId: "sauces", symptomId: "split", label: "Split sauce" },
@@ -267,38 +464,70 @@ const LESSONS_DATA = [
     ],
     sections: [
       {
-        heading: "The honest version",
-        body: `<p>I went to culinary school. I didn't finish. That used to feel like a failure — until I realized most of what I <em>use</em> every week wasn't in a textbook anyway.</p>
-        <p>School teaches precision, terminology, and standards. Home cooking needs <strong>repeatable fixes</strong> when the rice goes mushy at 7:15 PM and someone's already hungry. Different job. Same love of food.</p>`
+        heading: "What this is (plain English)",
+        body: `<p>I went to culinary school. I didn't finish. What actually changed my cooking at home wasn't mother sauces on a test — it was <strong>one repeatable dinner</strong> I could nail while tired.</p>
+        <p>This is that dinner: seared chicken (Maillard), pan sauce (French technique, home version), with mise en place so nothing burns. If you do one lesson meal, do this one.</p>`
       },
       {
-        heading: "What school gave me",
-        body: `<ul>
-          <li><strong>Vocabulary</strong> — naming a method (sear, braise, emulsion) tells you what to watch for</li>
-          <li><strong>Mise en place</strong> — not as performance, as panic prevention</li>
-          <li><strong>Sauce skeletons</strong> — pan sauce, roux, hollandaise as templates, not monuments</li>
-          <li><strong>Respect for timing</strong> — heat and order of operations matter more than fancy ingredients</li>
-        </ul>`
+        heading: "What you need",
+        ingredients: [
+          "2 bone-in chicken thighs",
+          "Salt, pepper",
+          "1 tbsp oil",
+          "½ cup chicken stock or water",
+          "1 tbsp butter",
+          "½ lemon",
+          "Optional: 1 shallot, handful of green beans or broccoli",
+          "Rice or bread for serving"
+        ],
+        ingredientsNote: "Read the walkthrough fully before prep — that's step zero of mise en place."
       },
       {
-        heading: "What home cooking taught me",
+        heading: "Do this now — step by step",
+        walkthrough: [
+          {
+            title: "Mise (10 minutes)",
+            text: "Pat thighs dry. Salt them. Measure stock into a cup. Cut butter. Halve lemon. Shallot minced in a bowl if using. Veg prepped. Pan and spatula out.",
+            watch: "Nothing left to chop once the pan is hot."
+          },
+          {
+            title: "Sear — dry heat",
+            text: "Medium-high pan, oil shimmers. Thighs skin-down, don't move 4 minutes. Flip, cook until 165°F internal (thermometer in thickest part). Rest on plate.",
+            watch: "Golden skin, brown fond in pan — that's flavor waiting."
+          },
+          {
+            title: "Pan sauce — same pan",
+            text: "Pour off extra fat. Optional shallot 30 sec. Add stock, scrape fond. Simmer 3 minutes. Off heat: whisk butter, lemon, salt, pepper.",
+            watch: "Glossy sauce. If it breaks, off heat + whisk harder or add splash of cold water."
+          },
+          {
+            title: "Veg — pick a method",
+            text: "Quick steam while chicken rests, or roast veg in oven before chicken if you planned ahead. Salt and butter on veg.",
+            watch: "Moist heat veg + dry heat chicken = balanced plate."
+          },
+          {
+            title: "Plate and taste",
+            text: "Sauce over chicken. Taste everything. Adjust: more lemon? pinch salt? You fixed dinner with skills, not a new recipe.",
+            watch: "If chicken is dry — next time pull at 160°F; it coasts to 165°F while resting."
+          }
+        ]
+      },
+      {
+        heading: "You're done when…",
         body: `<ul>
-          <li><strong>Troubleshooting beats perfection</strong> — a fixable mistake beats a perfect recipe you'll never repeat</li>
-          <li><strong>Symptom first</strong> — "too salty" is more useful than "I followed the recipe wrong"</li>
-          <li><strong>Small interventions</strong> — dilute, balance, transfer, re-crisp — before you trash the pot</li>
-          <li><strong>Build your own playbook</strong> — the checklist that prevents <em>your</em> recurring disasters</li>
+          <li>Chicken has golden skin and juicy interior</li>
+          <li>Sauce is glossy and poured over the rest</li>
+          <li>You prepped before heat and didn't burn garlic mid-panic</li>
+          <li>You'd happily cook this again on a weekday</li>
         </ul>
-        <p>That's why CookTriage exists: the loop I wish I'd had when I was learning alone after leaving school.</p>`
+        <p>Bookmark your triage paths for what actually goes wrong for <em>you</em> — too salty, split sauce, dry chicken. That's your personal curriculum.</p>`
       },
       {
-        heading: "If you're where I was",
-        body: `<p>You don't need a diploma to cook well. You need:</p>
-        <ol>
-          <li>Prep that matches your recipe's timing</li>
-          <li>One method you're confident in (start with pan sauce or a good sear)</li>
-          <li>A rescue mindset when things go sideways</li>
-        </ol>
-        <p>Start with the lessons here, then bookmark the triage paths you actually use. That's a curriculum — just one built from real mistakes.</p>`
+        heading: "The science behind the whole plate",
+        science: true,
+        body: `<p>This meal chains three ideas: <strong>mise en place</strong> prevents timing errors; <strong>Maillard</strong> on dry chicken builds crust and fond; <strong>pan sauce</strong> dissolves fond and emulsifies butter for body.</p>
+        <p><strong>Resting meat</strong> lets juices redistribute — muscle fibers relaxed, less juice on the board when you cut. Pull chicken slightly early because <strong>carryover cooking</strong> adds 5–10°F while it sits.</p>
+        <p>Culinary school teaches the vocabulary. Home cooking teaches <strong>which failures matter</strong> and how to fix them without starting over. CookTriage is the second part — the part I needed after I left school.</p>`
       }
     ]
   }

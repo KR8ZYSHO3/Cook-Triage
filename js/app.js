@@ -534,6 +534,43 @@
     progressEl.textContent = done === total ? "All set — you're ready to cook." : `${done} of ${total} checked`;
   }
 
+  function renderLessonSection(sec, lessonId, sectionIndex) {
+    let html = "";
+    if (sec.heading) {
+      html += `<h2>${sec.heading}`;
+      if (sec.science) html += ` <span class="science-badge">The why</span>`;
+      html += `</h2>`;
+    }
+    if (sec.body) html += sec.body;
+    if (sec.ingredients?.length) {
+      html += `
+        <div class="lesson-ingredients">
+          <ul>${sec.ingredients.map((item) => `<li>${item}</li>`).join("")}</ul>
+          ${sec.ingredientsNote ? `<p class="ingredients-note">${sec.ingredientsNote}</p>` : ""}
+        </div>
+      `;
+    }
+    if (sec.walkthrough?.length) {
+      html += `
+        <ol class="lesson-walkthrough">
+          ${sec.walkthrough
+            .map(
+              (step, idx) => `
+            <li>
+              <span class="walkthrough-title">${step.title || `Step ${idx + 1}`}</span>
+              <span class="walkthrough-text">${step.text}</span>
+              ${step.watch ? `<span class="step-watch">Watch for: ${step.watch}</span>` : ""}
+            </li>
+          `
+            )
+            .join("")}
+        </ol>
+      `;
+    }
+    if (sec.checklist) html += renderChecklist(sec, lessonId, sectionIndex);
+    return html;
+  }
+
   function openLesson(lessonId) {
     const lesson = LESSONS_DATA.find((l) => l.id === lessonId);
     if (!lesson || !els.lessonArticle) return;
@@ -543,11 +580,8 @@
 
     const sectionsHtml = lesson.sections
       .map((sec, i) => {
-        let html = "";
-        if (sec.heading) html += `<h2>${sec.heading}</h2>`;
-        if (sec.body) html += sec.body;
-        if (sec.checklist) html += renderChecklist(sec, lesson.id, i);
-        return `<section class="lesson-section">${html}</section>`;
+        const sectionClass = sec.science ? "lesson-section lesson-science" : "lesson-section";
+        return `<section class="${sectionClass}">${renderLessonSection(sec, lesson.id, i)}</section>`;
       })
       .join("");
 
