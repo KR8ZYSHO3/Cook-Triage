@@ -254,19 +254,29 @@
       : TRIAGE_DATA;
 
     els.categoryGrid.innerHTML = cats
-      .map(
-        (cat) => `
-        <button type="button" class="category-card" data-category="${cat.id}" role="listitem">
-          <span class="card-icon-wrap category-icon-wrap" aria-hidden="true">${cat.icon}</span>
-          <h3>${cat.title}</h3>
-          <p>${cat.description}</p>
-          <span class="card-footer">
-            <span class="category-count">${cat.symptoms.length} symptoms</span>
-            <span class="card-arrow" aria-hidden="true">→</span>
+      .map((cat) => {
+        const art = CATEGORY_IMAGES[cat.id];
+        const media = art
+          ? `<div class="card-media">
+              <img class="category-art" src="${art}" alt="" loading="lazy" decoding="async">
+              <span class="card-icon-wrap category-icon-wrap card-media-badge" aria-hidden="true">${cat.icon}</span>
+            </div>`
+          : `<span class="card-icon-wrap category-icon-wrap" aria-hidden="true">${cat.icon}</span>`;
+
+        return `
+        <button type="button" class="category-card${art ? " category-card--art" : ""}" data-category="${cat.id}" role="listitem">
+          ${media}
+          <span class="card-body">
+            <h3>${cat.title}</h3>
+            <p>${cat.description}</p>
+            <span class="card-footer">
+              <span class="category-count">${cat.symptoms.length} symptoms</span>
+              <span class="card-arrow" aria-hidden="true">→</span>
+            </span>
           </span>
         </button>
-      `
-      )
+      `;
+      })
       .join("");
 
     renderSearchResults(q);
@@ -485,19 +495,29 @@
 
   function renderLessonGrid() {
     if (!els.lessonGrid) return;
-    els.lessonGrid.innerHTML = LESSONS_DATA.map(
-      (lesson) => `
-        <button type="button" class="lesson-card" data-lesson="${lesson.id}" role="listitem">
-          <span class="card-icon-wrap lesson-icon-wrap" aria-hidden="true">${lesson.icon}</span>
-          <h3>${lesson.title}</h3>
-          <p>${lesson.subtitle}</p>
-          <span class="card-footer">
-            <span class="lesson-meta">${lesson.readTime}</span>
-            <span class="card-arrow" aria-hidden="true">→</span>
+    els.lessonGrid.innerHTML = LESSONS_DATA.map((lesson) => {
+      const art = LESSON_IMAGES[lesson.id];
+      const media = art
+        ? `<div class="card-media">
+            <img class="lesson-thumb" src="${art}" alt="" loading="lazy" decoding="async">
+            <span class="card-icon-wrap lesson-icon-wrap card-media-badge" aria-hidden="true">${lesson.icon}</span>
+          </div>`
+        : `<span class="card-icon-wrap lesson-icon-wrap" aria-hidden="true">${lesson.icon}</span>`;
+
+      return `
+        <button type="button" class="lesson-card${art ? " lesson-card--art" : ""}" data-lesson="${lesson.id}" role="listitem">
+          ${media}
+          <span class="card-body">
+            <h3>${lesson.title}</h3>
+            <p>${lesson.subtitle}</p>
+            <span class="card-footer">
+              <span class="lesson-meta">${lesson.readTime}</span>
+              <span class="card-arrow" aria-hidden="true">→</span>
+            </span>
           </span>
         </button>
-      `
-    ).join("");
+      `;
+    }).join("");
   }
 
   function renderChecklist(sec, lessonId, sectionIndex) {
@@ -615,10 +635,18 @@
       `
       : "";
 
+    const heroArt = LESSON_IMAGES[lesson.id];
+    const heroMedia = heroArt
+      ? `<div class="lesson-header-media">
+          <img class="lesson-hero-img" src="${heroArt}" alt="" loading="lazy" decoding="async">
+          <span class="lesson-header-icon" aria-hidden="true">${lesson.icon}</span>
+        </div>`
+      : `<span class="lesson-header-icon" aria-hidden="true">${lesson.icon}</span>`;
+
     els.lessonArticle.innerHTML = `
-      <header class="lesson-header">
-        <span class="lesson-header-icon" aria-hidden="true">${lesson.icon}</span>
-        <div>
+      <header class="lesson-header${heroArt ? " lesson-header--art" : ""}">
+        ${heroMedia}
+        <div class="lesson-header-text">
           <h1>${lesson.title}</h1>
           <p class="lesson-tagline">${lesson.tagline}</p>
           <p class="lesson-read-time">${lesson.readTime} read</p>
