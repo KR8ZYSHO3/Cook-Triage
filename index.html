@@ -14,9 +14,14 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@9..144,500;9..144,600;9..144,700;1,9..144,500&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient-orb ambient-orb--1"></div>
+    <div class="ambient-orb ambient-orb--2"></div>
+    <div class="ambient-orb ambient-orb--3"></div>
+  </div>
   <header class="site-header">
     <div class="container header-inner">
       <a href="#" class="logo" data-action="home">
@@ -32,15 +37,31 @@
 
   <main class="container">
     <section id="view-home" class="view active">
-      <div class="hero">
-        <h1>Something went wrong?<br>Let's fix it.</h1>
-        <p class="hero-sub">Search your symptom or pick a category. We walk through likely causes, branch by dish type when it matters, and tell you what to do <em>right now</em>.</p>
-        <p class="stats-bar" id="stats-bar"></p>
+      <div class="hero hero-panel">
+        <div class="hero-panel-inner">
+          <p class="hero-eyebrow">Free kitchen troubleshooting</p>
+          <h1>Something went wrong?<br><span class="hero-highlight">Let's fix it.</span></h1>
+          <p class="hero-sub">Search your symptom or pick a category. We walk through likely causes, branch by dish type when it matters, and tell you what to do <em>right now</em>.</p>
+          <div class="hero-flow" aria-hidden="true">
+            <span class="flow-pill flow-pill--1">Symptom</span>
+            <span class="flow-line"></span>
+            <span class="flow-pill flow-pill--2">Cause</span>
+            <span class="flow-line"></span>
+            <span class="flow-pill flow-pill--3">Fix</span>
+          </div>
+          <p class="stats-bar" id="stats-bar"></p>
+        </div>
       </div>
 
       <div class="search-wrap">
         <label class="search-label-visually-hidden" for="search-input">Search symptoms</label>
-        <input type="search" id="search-input" class="search-input" placeholder="Search: too salty, mushy rice, dry chicken, sauce split…" autocomplete="off">
+        <div class="search-field">
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+            <path d="M20 20L16.5 16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <input type="search" id="search-input" class="search-input" placeholder="Search: too salty, mushy rice, dry chicken, sauce split…" autocomplete="off">
+        </div>
         <div id="search-results" class="search-results" hidden></div>
       </div>
 
@@ -120,9 +141,12 @@
     </section>
 
     <section id="view-learn" class="view" hidden>
-      <div class="hero hero-compact">
-        <h1>Learn</h1>
-        <p class="hero-sub">Principles from a culinary school dropout who learned what actually matters at home: prep, methods, sauces, and how to rescue dinner.</p>
+      <div class="hero hero-compact hero-panel hero-panel--learn">
+        <div class="hero-panel-inner">
+          <p class="hero-eyebrow">Hands-on lessons</p>
+          <h1>Cook from <span class="hero-highlight">principles</span></h1>
+          <p class="hero-sub">Principles from a culinary school dropout who learned what actually matters at home: prep, methods, sauces, and how to rescue dinner.</p>
+        </div>
       </div>
       <div class="lesson-grid" id="lesson-grid" role="list"></div>
     </section>

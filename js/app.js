@@ -221,7 +221,11 @@
   function renderStats() {
     if (!els.statsBar) return;
     const s = getStats();
-    els.statsBar.textContent = `${s.categories} categories · ${s.symptoms} symptoms · ${s.causes} cause paths`;
+    els.statsBar.innerHTML = `
+      <span class="stat-pill">${s.categories} categories</span>
+      <span class="stat-pill">${s.symptoms} symptoms</span>
+      <span class="stat-pill">${s.causes} fixes</span>
+    `;
   }
 
   function renderQuickStart() {
@@ -253,10 +257,13 @@
       .map(
         (cat) => `
         <button type="button" class="category-card" data-category="${cat.id}" role="listitem">
-          <span class="category-icon" aria-hidden="true">${cat.icon}</span>
+          <span class="card-icon-wrap category-icon-wrap" aria-hidden="true">${cat.icon}</span>
           <h3>${cat.title}</h3>
           <p>${cat.description}</p>
-          <span class="category-count">${cat.symptoms.length} symptoms</span>
+          <span class="card-footer">
+            <span class="category-count">${cat.symptoms.length} symptoms</span>
+            <span class="card-arrow" aria-hidden="true">→</span>
+          </span>
         </button>
       `
       )
@@ -481,10 +488,13 @@
     els.lessonGrid.innerHTML = LESSONS_DATA.map(
       (lesson) => `
         <button type="button" class="lesson-card" data-lesson="${lesson.id}" role="listitem">
-          <span class="lesson-icon" aria-hidden="true">${lesson.icon}</span>
+          <span class="card-icon-wrap lesson-icon-wrap" aria-hidden="true">${lesson.icon}</span>
           <h3>${lesson.title}</h3>
           <p>${lesson.subtitle}</p>
-          <span class="lesson-meta">${lesson.readTime}</span>
+          <span class="card-footer">
+            <span class="lesson-meta">${lesson.readTime}</span>
+            <span class="card-arrow" aria-hidden="true">→</span>
+          </span>
         </button>
       `
     ).join("");
