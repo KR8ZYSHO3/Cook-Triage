@@ -1356,6 +1356,14 @@ body::before {
   max-width: 18ch;
 }
 
+.rescue-hours {
+  margin: 0.65rem 0 0;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  max-width: 22ch;
+  line-height: 1.45;
+}
+
 /* Buttons */
 .btn {
   display: inline-flex;
