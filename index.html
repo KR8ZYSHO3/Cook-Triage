@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="CookTriage — symptom, cause, fix for kitchen disasters. Free troubleshooting flowcharts for home cooks.">
+  <meta property="og:title" content="CookTriage — Rescue Your Dinner">
+  <meta property="og:description" content="Something went wrong in the kitchen? Search your symptom, get ranked causes, and step-by-step fixes — free.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kr8zyshoe3.github.io/Cook-Triage/">
+  <meta name="twitter:card" content="summary">
   <title>CookTriage — Rescue Your Dinner</title>
   <base href="/Cook-Triage/">
   <link rel="stylesheet" href="css/style.css">
@@ -39,6 +44,11 @@
         <div id="search-results" class="search-results" hidden></div>
       </div>
 
+      <section class="quick-start" aria-labelledby="quick-start-heading">
+        <h2 id="quick-start-heading" class="quick-start-heading">Common right now</h2>
+        <div class="quick-start-chips" id="quick-start-chips" role="list"></div>
+      </section>
+
       <div class="category-grid" id="category-grid" role="list"></div>
 
       <section class="learn-teaser">
@@ -62,7 +72,7 @@
         <div class="rescue-cta">
           <span class="price">$12</span>
           <a href="https://ko-fi.com/s/placeholder" class="btn btn-primary" id="rescue-link" target="_blank" rel="noopener">Get a Rescue</a>
-          <p class="rescue-note">Update this link in <code>index.html</code> once your Ko-fi or Gumroad is live.</p>
+          <p class="rescue-note" id="rescue-note" hidden>Link goes live soon — check back or open an issue on GitHub.</p>
         </div>
       </aside>
     </section>

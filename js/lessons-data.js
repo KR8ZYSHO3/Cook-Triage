@@ -6,6 +6,11 @@ const LESSONS_DATA = [
     subtitle: "Everything in its place — the habit that changed everyday cooking",
     readTime: "8 min",
     tagline: "Prep is not chef theater. It's troubleshooting before anything goes wrong.",
+    relatedTriage: [
+      { catId: "flavor", symptomId: "smoky-burnt-taste", label: "Burnt / smoky taste" },
+      { catId: "sauces", symptomId: "split", label: "Split sauce" },
+      { catId: "meat", symptomId: "dry-chicken", label: "Dry chicken" }
+    ],
     sections: [
       {
         heading: "What it actually means at home",
@@ -30,6 +35,7 @@ const LESSONS_DATA = [
       },
       {
         heading: "Checklist: before you turn on the stove",
+        interactive: true,
         checklist: [
           "Read the full recipe once — note when things get added and how long each step takes",
           "Pull every ingredient and tool onto the counter (if it's not there, you find out now)",
@@ -55,6 +61,11 @@ const LESSONS_DATA = [
     subtitle: "Know the method, know what \"done\" looks like — and what went wrong",
     readTime: "10 min",
     tagline: "Recipes are examples. Methods are the rules.",
+    relatedTriage: [
+      { catId: "heat-pan", symptomId: "burnt-outside-raw-inside", label: "Burnt outside, raw inside" },
+      { catId: "heat-pan", symptomId: "stuck", label: "Food stuck to pan" },
+      { catId: "frying", symptomId: "not-crispy", label: "Not crispy / soggy fry" }
+    ],
     sections: [
       {
         heading: "The unlock",
@@ -112,6 +123,11 @@ const LESSONS_DATA = [
     subtitle: "Mother sauces without the fear — formulas you can actually use tonight",
     readTime: "14 min",
     tagline: "Classical French isn't about fancy. It's about knowing three moves.",
+    relatedTriage: [
+      { catId: "sauces", symptomId: "split", label: "Curdled / split sauce" },
+      { catId: "sauces", symptomId: "grainy-flour", label: "Grainy flour sauce" },
+      { catId: "flavor", symptomId: "too-salty", label: "Too salty after reducing" }
+    ],
     sections: [
       {
         heading: "Forget what culinary school did to you",
@@ -191,6 +207,7 @@ const LESSONS_DATA = [
       },
       {
         heading: "Quick reference card",
+        interactive: true,
         checklist: [
           "Pan sauce: fond → deglaze → reduce → butter off heat",
           "Roux sauce: equal butter + flour → whisk liquid slowly → simmer thick",
@@ -209,6 +226,11 @@ const LESSONS_DATA = [
     subtitle: "Symptom → cause → fix — how to think when dinner is going sideways",
     readTime: "6 min",
     tagline: "You don't need a new recipe. You need a diagnosis.",
+    relatedTriage: [
+      { catId: "rescue", symptomId: "whole-meal-wrong", label: "Whole meal feels wrong" },
+      { catId: "flavor", symptomId: "too-salty", label: "Too salty" },
+      { catId: "grains", symptomId: "rice-mushy", label: "Mushy rice" }
+    ],
     sections: [
       {
         heading: "Stop, don't panic-scrap",
@@ -228,6 +250,55 @@ const LESSONS_DATA = [
         heading: "When to actually abandon ship",
         body: `<p>Discard when: acrid burnt through the whole pot, raw meat cross-contamination, or fish that's turned. Repurpose when: dry meat (shred into sauce), mushy rice (fried rice tomorrow), broken sauce (strain and rebuild).</p>
         <p>Knowing the difference saves money and ego.</p>`
+      }
+    ]
+  },
+  {
+    id: "dropout-to-dinner",
+    icon: "🎓",
+    title: "Dropout to dinner",
+    subtitle: "What culinary school taught me — and what home cooking actually needed",
+    readTime: "7 min",
+    tagline: "I didn't finish school. I finished learning what works on a Tuesday.",
+    relatedTriage: [
+      { catId: "flavor", symptomId: "too-salty", label: "Too salty" },
+      { catId: "sauces", symptomId: "split", label: "Split sauce" },
+      { catId: "meat", symptomId: "dry-chicken", label: "Dry chicken" }
+    ],
+    sections: [
+      {
+        heading: "The honest version",
+        body: `<p>I went to culinary school. I didn't finish. That used to feel like a failure — until I realized most of what I <em>use</em> every week wasn't in a textbook anyway.</p>
+        <p>School teaches precision, terminology, and standards. Home cooking needs <strong>repeatable fixes</strong> when the rice goes mushy at 7:15 PM and someone's already hungry. Different job. Same love of food.</p>`
+      },
+      {
+        heading: "What school gave me",
+        body: `<ul>
+          <li><strong>Vocabulary</strong> — naming a method (sear, braise, emulsion) tells you what to watch for</li>
+          <li><strong>Mise en place</strong> — not as performance, as panic prevention</li>
+          <li><strong>Sauce skeletons</strong> — pan sauce, roux, hollandaise as templates, not monuments</li>
+          <li><strong>Respect for timing</strong> — heat and order of operations matter more than fancy ingredients</li>
+        </ul>`
+      },
+      {
+        heading: "What home cooking taught me",
+        body: `<ul>
+          <li><strong>Troubleshooting beats perfection</strong> — a fixable mistake beats a perfect recipe you'll never repeat</li>
+          <li><strong>Symptom first</strong> — "too salty" is more useful than "I followed the recipe wrong"</li>
+          <li><strong>Small interventions</strong> — dilute, balance, transfer, re-crisp — before you trash the pot</li>
+          <li><strong>Build your own playbook</strong> — the checklist that prevents <em>your</em> recurring disasters</li>
+        </ul>
+        <p>That's why CookTriage exists: the loop I wish I'd had when I was learning alone after leaving school.</p>`
+      },
+      {
+        heading: "If you're where I was",
+        body: `<p>You don't need a diploma to cook well. You need:</p>
+        <ol>
+          <li>Prep that matches your recipe's timing</li>
+          <li>One method you're confident in (start with pan sauce or a good sear)</li>
+          <li>A rescue mindset when things go sideways</li>
+        </ol>
+        <p>Start with the lessons here, then bookmark the triage paths you actually use. That's a curriculum — just one built from real mistakes.</p>`
       }
     ]
   }

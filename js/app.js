@@ -1,10 +1,22 @@
 (function () {
+  const QUICK_START = [
+    { catId: "flavor", symptomId: "too-salty", label: "Too salty" },
+    { catId: "grains", symptomId: "rice-mushy", label: "Mushy rice" },
+    { catId: "sauces", symptomId: "split", label: "Sauce split" },
+    { catId: "meat", symptomId: "dry-chicken", label: "Dry chicken" },
+    { catId: "heat-pan", symptomId: "stuck", label: "Stuck to pan" },
+    { catId: "eggs", symptomId: "rubbery", label: "Rubbery eggs" },
+    { catId: "pasta", symptomId: "mushy", label: "Mushy pasta" },
+    { catId: "baking", symptomId: "dense-cake", label: "Dense cake" }
+  ];
+
   const state = {
     category: null,
     symptom: null,
     variant: null,
     causeIndex: 0,
-    searchQuery: ""
+    searchQuery: "",
+    suppressHash: false
   };
 
   const views = {
@@ -16,6 +28,7 @@
 
   const els = {
     categoryGrid: document.getElementById("category-grid"),
+    quickStartChips: document.getElementById("quick-start-chips"),
     searchInput: document.getElementById("search-input"),
     searchResults: document.getElementById("search-results"),
     statsBar: document.getElementById("stats-bar"),
@@ -30,6 +43,7 @@
     btnStillStuck: document.getElementById("btn-still-stuck"),
     btnBackSymptom: document.getElementById("btn-back-symptom"),
     rescueLink: document.getElementById("rescue-link"),
+    rescueNote: document.getElementById("rescue-note"),
     lessonGrid: document.getElementById("lesson-grid"),
     lessonArticle: document.getElementById("lesson-article"),
     breadcrumbLesson: document.getElementById("breadcrumb-lesson"),
@@ -78,6 +92,77 @@
     return { categories: TRIAGE_DATA.length, symptoms, causes };
   }
 
+  function updateHash() {
+    if (state.suppressHash) return;
+
+    let hash = "#/";
+    if (views.lesson.classList.contains("active") && els.breadcrumbLesson.textContent) {
+      const lesson = LESSONS_DATA.find((l) => l.title === els.breadcrumbLesson.textContent);
+      if (lesson) hash = `#/lesson/${lesson.id}`;
+    } else if (views.learn.classList.contains("active")) {
+      hash = "#/learn";
+    } else if (views.triage.classList.contains("active") && state.category) {
+      hash = `#/triage/${state.category.id}`;
+      if (state.symptom) {
+        hash += `/${state.symptom}`;
+        if (state.variant) hash += `/${state.variant}`;
+        const step = els.steps.fix.classList.contains("active")
+          ? "fix"
+          : els.steps.cause.classList.contains("active")
+            ? "cause"
+            : "symptom";
+        if (step !== "symptom") hash += `/${step}`;
+        if (step === "cause" || step === "fix") hash += `/${state.causeIndex}`;
+      }
+    }
+
+    if (location.hash !== hash) {
+      history.replaceState(null, "", hash);
+    }
+  }
+
+  function parseHash() {
+    const raw = location.hash.replace(/^#\/?/, "");
+    if (!raw) return { view: "home" };
+
+    const parts = raw.split("/");
+    const route = parts[0];
+
+    if (route === "learn") return { view: "learn" };
+    if (route === "lesson" && parts[1]) return { view: "lesson", lessonId: parts[1] };
+    if (route === "triage" && parts[1]) {
+      return {
+        view: "triage",
+        catId: parts[1],
+        symptomId: parts[2] || null,
+        variantId: parts[3] && !["symptom", "cause", "fix"].includes(parts[3]) ? parts[3] : null,
+        step: ["symptom", "cause", "fix"].includes(parts[3]) ? parts[3] : parts[4] || null,
+        causeIndex: Number(parts[4] || parts[5]) || 0
+      };
+    }
+    return { view: "home" };
+  }
+
+  function applyRoute(route) {
+    state.suppressHash = true;
+
+    if (route.view === "lesson" && route.lessonId) {
+      openLesson(route.lessonId);
+    } else if (route.view === "learn") {
+      showLearn();
+    } else if (route.view === "triage" && route.catId) {
+      startCategory(route.catId, route.symptomId || null, {
+        variantId: route.variantId,
+        step: route.step,
+        causeIndex: route.causeIndex
+      });
+    } else {
+      goHome();
+    }
+
+    state.suppressHash = false;
+  }
+
   function showView(name) {
     Object.values(views).forEach((v) => {
       v.classList.remove("active");
@@ -86,6 +171,7 @@
     views[name].classList.add("active");
     views[name].hidden = false;
     window.scrollTo({ top: 0, behavior: "smooth" });
+    updateHash();
   }
 
   function setProgress(step) {
@@ -103,6 +189,7 @@
     });
     els.steps[name].hidden = false;
     els.steps[name].classList.add("active");
+    updateHash();
   }
 
   function getCurrentSymptom() {
@@ -135,6 +222,17 @@
     if (!els.statsBar) return;
     const s = getStats();
     els.statsBar.textContent = `${s.categories} categories · ${s.symptoms} symptoms · ${s.causes} cause paths`;
+  }
+
+  function renderQuickStart() {
+    if (!els.quickStartChips) return;
+    els.quickStartChips.innerHTML = QUICK_START.map(
+      (item) => `
+        <button type="button" class="quick-chip" data-jump-cat="${item.catId}" data-jump-symptom="${item.symptomId}" role="listitem">
+          ${item.label}
+        </button>
+      `
+    ).join("");
   }
 
   function renderCategories(filter = "") {
@@ -200,22 +298,46 @@
     `;
   }
 
-  function startCategory(categoryId, symptomId = null) {
+  function startCategory(categoryId, symptomId = null, opts = {}) {
+    const { variantId = null, step = null, causeIndex = 0 } = opts;
+
     setNav("triage");
     state.category = TRIAGE_DATA.find((c) => c.id === categoryId);
+    if (!state.category) return goHome();
+
     state.symptom = symptomId;
-    state.variant = null;
-    state.causeIndex = 0;
+    state.variant = variantId;
+    state.causeIndex = causeIndex;
 
     els.breadcrumbCategory.textContent = state.category.title;
 
     if (symptomId) {
       const symptom = getCurrentSymptom();
-      if (symptom.variants && symptom.variants.length) {
-        renderVariantStep();
-      } else {
-        selectSymptom(symptomId, true);
+      if (!symptom) {
+        state.symptom = null;
+        renderSymptomStep();
+        setProgress(1);
+        showTriageStep("symptom");
+        showView("triage");
+        return;
       }
+
+      if (variantId) {
+        selectVariant(variantId);
+        if (step === "fix") renderFix();
+        else if (step === "cause") renderCause();
+        showView("triage");
+        return;
+      }
+
+      if (symptom.variants && symptom.variants.length && !variantId) {
+        renderVariantStep();
+        showView("triage");
+        return;
+      }
+
+      selectSymptom(symptomId, true);
+      if (step === "fix") renderFix();
       showView("triage");
       return;
     }
@@ -288,6 +410,10 @@
 
   function renderCause() {
     const cause = getCurrentCause();
+    if (!cause) {
+      backToSymptoms();
+      return;
+    }
     const causes = getActiveCauses();
     const badge = likelihoodLabel(cause.likelihood);
 
@@ -315,6 +441,7 @@
 
   function renderFix() {
     const cause = getCurrentCause();
+    if (!cause) return;
 
     els.fixCard.innerHTML = `
       <ol class="fix-steps">
@@ -363,6 +490,50 @@
     ).join("");
   }
 
+  function renderChecklist(sec, lessonId, sectionIndex) {
+    const listClass = sec.interactive ? "lesson-checklist interactive" : "lesson-checklist";
+    const storageKey = `cooktriage-check-${lessonId}-${sectionIndex}`;
+
+    if (sec.interactive) {
+      let saved = [];
+      try {
+        saved = JSON.parse(localStorage.getItem(storageKey) || "[]");
+      } catch (_) {
+        saved = [];
+      }
+
+      return `
+        <ul class="${listClass}" data-checklist-key="${storageKey}">
+          ${sec.checklist
+            .map((item, i) => {
+              const checked = saved.includes(i) ? "checked" : "";
+              return `
+                <li class="${checked ? "done" : ""}">
+                  <label class="checklist-label">
+                    <input type="checkbox" class="checklist-input" data-index="${i}" ${checked}>
+                    <span>${item}</span>
+                  </label>
+                </li>
+              `;
+            })
+            .join("")}
+        </ul>
+        <p class="checklist-progress" data-progress-for="${storageKey}"></p>
+      `;
+    }
+
+    return `<ul class="${listClass}">${sec.checklist.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+  }
+
+  function updateChecklistProgress(list) {
+    const key = list.dataset.checklistKey;
+    const progressEl = document.querySelector(`[data-progress-for="${key}"]`);
+    if (!progressEl) return;
+    const total = list.querySelectorAll(".checklist-input").length;
+    const done = list.querySelectorAll(".checklist-input:checked").length;
+    progressEl.textContent = done === total ? "All set — you're ready to cook." : `${done} of ${total} checked`;
+  }
+
   function openLesson(lessonId) {
     const lesson = LESSONS_DATA.find((l) => l.id === lessonId);
     if (!lesson || !els.lessonArticle) return;
@@ -371,16 +542,34 @@
     els.breadcrumbLesson.textContent = lesson.title;
 
     const sectionsHtml = lesson.sections
-      .map((sec) => {
+      .map((sec, i) => {
         let html = "";
         if (sec.heading) html += `<h2>${sec.heading}</h2>`;
         if (sec.body) html += sec.body;
-        if (sec.checklist) {
-          html += `<ul class="lesson-checklist">${sec.checklist.map((item) => `<li>${item}</li>`).join("")}</ul>`;
-        }
+        if (sec.checklist) html += renderChecklist(sec, lesson.id, i);
         return `<section class="lesson-section">${html}</section>`;
       })
       .join("");
+
+    const relatedHtml = lesson.relatedTriage?.length
+      ? `
+        <section class="lesson-related">
+          <h2>Related triage paths</h2>
+          <p class="lesson-related-hint">Jump straight to fixes for problems this lesson helps prevent.</p>
+          <div class="lesson-related-links">
+            ${lesson.relatedTriage
+              .map(
+                (link) => `
+              <button type="button" class="related-triage-btn" data-jump-cat="${link.catId}" data-jump-symptom="${link.symptomId}">
+                ${link.label} →
+              </button>
+            `
+              )
+              .join("")}
+          </div>
+        </section>
+      `
+      : "";
 
     els.lessonArticle.innerHTML = `
       <header class="lesson-header">
@@ -392,7 +581,12 @@
         </div>
       </header>
       ${sectionsHtml}
+      ${relatedHtml}
     `;
+
+    els.lessonArticle.querySelectorAll(".lesson-checklist.interactive").forEach((list) => {
+      updateChecklistProgress(list);
+    });
 
     showView("lesson");
   }
@@ -411,6 +605,19 @@
     showTriageStep("symptom");
   }
 
+  function setupRescueCta() {
+    const link = els.rescueLink?.href || "";
+    const isPlaceholder = link.includes("placeholder");
+    if (els.rescueNote) els.rescueNote.hidden = !isPlaceholder;
+    if (isPlaceholder && els.rescueLink) {
+      els.rescueLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        els.rescueNote.hidden = false;
+        els.rescueNote.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
+    }
+  }
+
   function scrollToRescue() {
     const link = els.rescueLink.href;
     if (link && !link.includes("placeholder")) {
@@ -418,7 +625,9 @@
       return;
     }
     goHome();
-    els.rescueLink.scrollIntoView({ behavior: "smooth", block: "center" });
+    const rescueCard = document.querySelector(".rescue-card");
+    if (rescueCard) rescueCard.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (els.rescueNote) els.rescueNote.hidden = false;
   }
 
   document.addEventListener("click", (e) => {
@@ -467,6 +676,20 @@
     }
   });
 
+  document.addEventListener("change", (e) => {
+    const input = e.target.closest(".checklist-input");
+    if (!input) return;
+
+    const list = input.closest(".lesson-checklist");
+    const key = list.dataset.checklistKey;
+    const items = [...list.querySelectorAll(".checklist-input")];
+    const saved = items.map((cb, i) => (cb.checked ? i : null)).filter((i) => i !== null);
+
+    input.closest("li").classList.toggle("done", input.checked);
+    localStorage.setItem(key, JSON.stringify(saved));
+    updateChecklistProgress(list);
+  });
+
   if (els.searchInput) {
     els.searchInput.addEventListener("input", (e) => {
       state.searchQuery = e.target.value;
@@ -474,11 +697,23 @@
     });
   }
 
+  window.addEventListener("hashchange", () => {
+    applyRoute(parseHash());
+  });
+
   els.btnAltCause.addEventListener("click", cycleCause);
   els.btnToFix.addEventListener("click", renderFix);
   els.btnStillStuck.addEventListener("click", scrollToRescue);
   if (els.btnBackSymptom) els.btnBackSymptom.addEventListener("click", backToSymptoms);
 
+  setupRescueCta();
   renderStats();
+  renderQuickStart();
   renderCategories();
+
+  if (location.hash) {
+    applyRoute(parseHash());
+  } else {
+    updateHash();
+  }
 })();
